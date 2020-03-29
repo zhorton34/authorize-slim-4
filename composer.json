@@ -2,6 +2,15 @@
     "require": {
         "slim/slim": "4.*",
         "slim/psr7": "^1.0",
-        "php-di/php-di": "^6.0"
+        "php-di/php-di": "^6.0",
+        "jenssegers/blade": "^1.2"
+    },
+    "autoload": {
+        "files": [
+            "./app/helpers.php"
+        ],
+        "psr-4": {
+            "App\\": "app"
+        }
     }
 }
