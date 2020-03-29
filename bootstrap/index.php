@@ -1,23 +1,32 @@
 <?php
 
 use DI\Container;
-use Slim\Factory\AppFactory;
 
 require __DIR__ . '/../vendor/autoload.php';
 
-$container = new Container;
+$_SERVER['container'] = new Container;
+if (!function_exists('container'))
+{
+    function container()
+    {
+        return $_SERVER['container'];
+    }
+}
+$container = container();
 
-$settings = require __DIR__ . '/../app/settings.php';
-$settings($container);
+$_SERVER['app'] = DI\Bridge\Slim\Bridge::create($container);
+if (!function_exists('app'))
+{
+    function app()
+    {
+        return $_SERVER['app'];
+    }
+}
+$app = app();
 
-AppFactory::setContainer($container);
-
-$app = AppFactory::create();
-
-$middleware = require __DIR__ . '/../app/middleware.php';
+$middleware = require app_path('middleware.php');
 $middleware($app);
 
-$routes = require __DIR__ . '/../app/routes.php';
-$routes($app);
+require app_path('routes.php');
 
 $app->run();

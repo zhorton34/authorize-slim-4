@@ -1,19 +1,14 @@
 <?php
 
-use Slim\App;
+use App\Support\Route;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
-return function (App $app) {
-    $app->get('/home', function (Request $request, Response $response, $parameters) {
-        $name = 'Clean Code Studio';
+Route::get('/', function (Request $request, Response $response, $parameters = []) {
+    $response->getBody()->write('Hello world');
 
-        return view($response, 'auth.home', compact('name'));
-    });
+    return $response;
+});
 
-    $app->get('/', function (Request $request, Response $response, $parameters) {
-        $response->getBody()->write('Hello World!');
+Route::get('/home', 'HomeController@index');
 
-        return $response;
-    });
-};
