@@ -5,8 +5,9 @@
         "php-di/php-di": "^6.0",
         "jenssegers/blade": "^1.2",
         "php-di/slim-bridge": "^3.0",
-        "illuminate/support": "6.0",
-        "ext-json": "*"
+        "illuminate/support": "7.0.0",
+        "ext-json": "*",
+        "illuminate/database": "^7.4"
     },
     "autoload": {
         "files": [
@@ -15,5 +16,8 @@
         "psr-4": {
             "App\\": "app"
         }
+    },
+    "require-dev": {
+        "laravel/homestead": "^10.7"
     }
 }
