@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Controllers\Http;
+namespace App\Http\Controllers;
+
+use App\Support\View;
 
 class HomeController
 {
-    public function index($response)
+    public function index(View $view, $name)
     {
-        $response->getBody()->write('Home Controller');
-
-        return $response;
+        return $view('auth.home', compact('name'));
     }
 }

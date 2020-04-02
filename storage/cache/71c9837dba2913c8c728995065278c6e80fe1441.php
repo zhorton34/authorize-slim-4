@@ -1,6 +1,6 @@
 <?php $__env->startSection('content'); ?>
     <div>
-        Home Page
+        Name: <?php echo e($name); ?> <small>(id <?php echo e($id); ?>)</small>
     </div>
 <?php $__env->stopSection(); ?>
 

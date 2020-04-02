@@ -8,4 +8,4 @@ $app = SlimAppFactory::create(new Container);
 
 ServiceProvider::setup($app, config('app.providers'));
 
-$app->run();
+return $app;

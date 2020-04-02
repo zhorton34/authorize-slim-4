@@ -2,6 +2,6 @@
 
 @section('content')
     <div>
-        Home Page
+        Name: {{ $name }} <small>(id {{ $id }})</small>
     </div>
 @endsection

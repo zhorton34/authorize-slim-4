@@ -2,6 +2,23 @@
 
 /* Global Helper Functions */
 use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
+
+/*
+ * base_path
+ * config_path
+ * resources_path
+ * public_path
+ * routes_path
+ * storage_path
+ * app_path
+ * dd (die and dump)
+ * throw_when
+ * class_basename
+ * config
+ * data_get
+ * data_set
+ */
 
 if (!function_exists('base_path'))
 {
@@ -73,6 +90,7 @@ if (!function_exists('dd'))
         die;
     }
 }
+
 if (!function_exists('throw_when'))
 {
     function throw_when(bool $fails, string $message, string $exception = Exception::class)
@@ -103,13 +121,12 @@ if (!function_exists('config'))
         foreach ($config_files as $file)
         {
             throw_when(
-                strpos($file, '.php') === true,
+                Str::after($file, '.') !== 'php',
                 'Config files must be .php files'
             );
 
-            $name = str_replace('.php', '', $file);
 
-            data_set($config, $name, require config_path($file));
+            data_set($config, Str::before($file, '.php') , require config_path($file));
         }
 
         return data_get($config, $path);

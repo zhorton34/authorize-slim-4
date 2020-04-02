@@ -8,13 +8,11 @@ class RoutesServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        $app = Route::setApp($this->app);
-
-        return require routes_path('web.php');
+        Route::setup($this->app);
     }
 
     public function boot()
     {
-
+        require routes_path('web.php');
     }
 }

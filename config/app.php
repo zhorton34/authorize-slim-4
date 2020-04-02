@@ -1,8 +1,9 @@
 <?php
 
 return [
+    'name' => 'Slim 4 Authorization',
     'providers' => [
-        App\Providers\BladeServiceProvider::class,
+        App\Providers\ViewServiceProvider::class,
         App\Providers\RoutesServiceProvider::class,
         App\Providers\ErrorMiddlewareServiceProvider::class
     ]

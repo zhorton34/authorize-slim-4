@@ -13,7 +13,10 @@ abstract class ServiceProvider
         $this->app = $app;
     }
 
+    // all provider register methods run first
     abstract public function register();
+
+    // all provider boot methods run second
     abstract public function boot();
 
     final public static function setup(App &$app, array $providers)
@@ -23,5 +26,4 @@ abstract class ServiceProvider
         array_walk($providers, fn (ServiceProvider $provider) => $provider->register());
         array_walk($providers, fn (ServiceProvider $provider) => $provider->boot());
     }
-
 }
