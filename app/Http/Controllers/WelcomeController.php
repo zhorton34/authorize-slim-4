@@ -13,7 +13,7 @@ class WelcomeController
 
     public function show($response, $name, $id)
     {
-        $response->getBody()->write("Show {$name} has an id of {$id}");
+        $response->getBody()->write("Welcome {$name} you have an id of {$id}");
 
         return $response;
     }
