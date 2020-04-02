@@ -2,65 +2,6 @@
 
 /* Global Helper Functions */
 use Illuminate\Support\Arr;
-use Jenssegers\Blade\Blade;
-use Psr\Http\Message\ResponseInterface as Response;
-
-if (!function_exists('throw_when'))
-{
-    function throw_when(bool $fails, string $message, string $exception = Exception::class)
-    {
-        if (!$fails) return;
-
-        throw new $exception($message);
-    }
-}
-
-if (! function_exists('class_basename')) {
-    function class_basename($class)
-    {
-        $class = is_object($class) ? get_class($class) : $class;
-
-        return basename(str_replace('\\', '/', $class));
-    }
-}
-
-if (!function_exists('config'))
-{
-    function config($path = null)
-    {
-        $config = [];
-        $folder = scandir(config_path());
-        $config_files = array_slice($folder, 2, count($folder));
-
-        foreach ($config_files as $file)
-        {
-            throw_when(
-                strpos($file, '.php') === true,
-                'Config files must be .php files'
-            );
-
-            $name = str_replace('.php', '', $file);
-
-            data_set($config, $name, require config_path($file));
-        }
-
-        return data_get($config, $path);
-    }
-}
-
-if (!function_exists('view'))
-{
-    function view(Response $response, $template, $with = [])
-    {
-        $response->getBody()->write(
-            (new Blade(config('blade.views'), config('blade.cache')))
-                ->make($template, $with)
-                ->render()
-        );
-
-        return $response;
-    }
-}
 
 if (!function_exists('base_path'))
 {
@@ -102,11 +43,76 @@ if (!function_exists('resources_path'))
     }
 }
 
+if (!function_exists('routes_path'))
+{
+    function routes_path($path = '')
+    {
+        return base_path("routes/{$path}");
+    }
+}
+
 if (!function_exists('app_path'))
 {
     function app_path($path = '')
     {
         return base_path("app/{$path}");
+    }
+}
+
+if (!function_exists('dd'))
+{
+    function dd()
+    {
+        array_map(function ($content) {
+            echo "<pre>";
+            var_dump($content);
+            echo "</pre>";
+            echo "<hr>";
+        }, func_get_args());
+
+        die;
+    }
+}
+if (!function_exists('throw_when'))
+{
+    function throw_when(bool $fails, string $message, string $exception = Exception::class)
+    {
+        if (!$fails) return;
+
+        throw new $exception($message);
+    }
+}
+
+if (! function_exists('class_basename')) {
+    function class_basename($class)
+    {
+        $class = is_object($class) ? get_class($class) : $class;
+
+        return basename(str_replace('\\', '/', $class));
+    }
+}
+
+if (!function_exists('config'))
+{
+    function config($path = null)
+    {
+        $config = [];
+        $folder = scandir(config_path());
+        $config_files = array_slice($folder, 2, count($folder));
+
+        foreach ($config_files as $file)
+        {
+            throw_when(
+                strpos($file, '.php') === true,
+                'Config files must be .php files'
+            );
+
+            $name = str_replace('.php', '', $file);
+
+            data_set($config, $name, require config_path($file));
+        }
+
+        return data_get($config, $path);
     }
 }
 

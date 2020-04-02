@@ -2,22 +2,33 @@
 
 namespace App\Support;
 
+use Slim\App;
 use Illuminate\Support\Str;
 
 class Route
 {
+    protected static $app;
+
+    public static function setApp(App &$app)
+    {
+        self::$app = $app;
+
+        return $app;
+    }
+
     public static function __callStatic($verb, $parameters)
     {
+        $app = self::$app;
         [$route, $action] = $parameters;
 
         self::validation($route, $verb, $action);
 
         return is_callable($action)
-            ? app()->$verb($route, $action)
-            : app()->$verb($route, self::resolutionViaController($action));
+            ? $app->$verb($route, $action)
+            : $app->$verb($route, self::resolveViaController($action));
     }
 
-    public static function resolutionViaController($action)
+    public static function resolveViaController($action)
     {
         $class = Str::before($action, '@');
         $method = Str::after($action, '@');

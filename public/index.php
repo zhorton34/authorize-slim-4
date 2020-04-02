@@ -1,3 +1,4 @@
 <?php
 
-require '../bootstrap/index.php';
+require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/../bootstrap/index.php';

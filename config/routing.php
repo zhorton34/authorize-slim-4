@@ -2,6 +2,6 @@
 
 return [
     'controllers' => [
-        'namespace' => '\\App\\Controllers\\'
+        'namespace' => '\\App\\Http\\Controllers\\'
     ]
 ];

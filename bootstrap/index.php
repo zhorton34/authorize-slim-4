@@ -1,32 +1,11 @@
 <?php
 
 use DI\Container;
+use App\Providers\ServiceProvider;
+use DI\Bridge\Slim\Bridge as SlimAppFactory;
 
-require __DIR__ . '/../vendor/autoload.php';
+$app = SlimAppFactory::create(new Container);
 
-$_SERVER['container'] = new Container;
-if (!function_exists('container'))
-{
-    function container()
-    {
-        return $_SERVER['container'];
-    }
-}
-$container = container();
-
-$_SERVER['app'] = DI\Bridge\Slim\Bridge::create($container);
-if (!function_exists('app'))
-{
-    function app()
-    {
-        return $_SERVER['app'];
-    }
-}
-$app = app();
-
-$middleware = require app_path('middleware.php');
-$middleware($app);
-
-require app_path('routes.php');
+ServiceProvider::setup($app, config('app.providers'));
 
 $app->run();
