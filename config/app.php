@@ -6,5 +6,6 @@ return [
         \App\Providers\DebugServiceProvider::class,
         \App\Providers\BladeServiceProvider::class,
         \App\Providers\RouteServiceProvider::class,
+        \App\Providers\DatabaseServiceProvider::class,
     ]
 ];

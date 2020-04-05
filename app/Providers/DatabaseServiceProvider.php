@@ -2,20 +2,19 @@
 
 namespace App\Providers;
 
-use Illuminate\Database\Capsule\Manager;
+use Illuminate\Database\Capsule\Manager as DB;
 
 class DatabaseServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        $this->app->getContainer()->set('DB', function () {
-            $capsule = new Manager;
-            $capsule->addConnection(config('database.mysql'));
-            $capsule->setAsGlobal();
-            $capsule->bootEloquent();
+        $settings = config("database.connections.mysql");
+        $capsule = new DB;
+        $capsule->addConnection($settings);
+        $capsule->setAsGlobal();
+        $capsule->bootEloquent();
 
-            return $capsule;
-        });
+        $this->app->getContainer()->set(DB::class, fn () => $capsule);
     }
 
     public function boot()

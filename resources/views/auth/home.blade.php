@@ -2,6 +2,9 @@
 
 @section('content')
     <div>
-        Home Page
+        Welcome Home {{ $user->first_name }} {{ $user->last_name }}
+        <small>
+            ({{ $user->email }})
+        </small>
     </div>
 @endsection
