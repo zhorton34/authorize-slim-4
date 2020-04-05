@@ -2,6 +2,9 @@
 
 @section('content')
     <div>
-        Home Page {{ env('NON_EXISTING_ENV_VALUE', 'Value Default To Me!!') }}
+        {{ \Illuminate\Support\Str::plural($name) }} Home Page
+        <pre>
+            {{ $user }}
+        </pre>
     </div>
 @endsection

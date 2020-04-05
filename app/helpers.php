@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 /*
  * env
  * base_path
+ * database_path
  * config_path
  * resources_path
  * public_path
@@ -33,12 +34,19 @@ if (!function_exists('env'))
     }
 }
 
-
 if (!function_exists('base_path'))
 {
     function base_path($path = '')
     {
         return  __DIR__ . "/../{$path}";
+    }
+}
+
+if (!function_exists('database_path'))
+{
+    function database_path($path = '')
+    {
+        return  base_path("database/{$path}");
     }
 }
 
