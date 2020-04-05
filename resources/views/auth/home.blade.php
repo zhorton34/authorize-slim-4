@@ -2,6 +2,13 @@
 
 @section('content')
     <div>
-        Home Page {{ env('NON_EXISTING_ENV_VALUE', 'Value Default To Me!!') }}
+        Home Page
+
+        @if($user->actingAs('Admin', 'SuperAdmin'))
+            <pre>
+                {{ $user->name }} {{ $user->email }} {{ $user->password }}
+            </pre>
+        @endif
+
     </div>
 @endsection

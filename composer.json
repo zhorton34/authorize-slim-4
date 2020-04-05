@@ -26,5 +26,8 @@
         "post-root-package-install": [
             "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ]
+    },
+    "require-dev": {
+        "laravel/homestead": "^10.7"
     }
 }
