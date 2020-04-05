@@ -10,14 +10,16 @@
         "php-di/slim-bridge": "^3.0",
         "illuminate/support": "^7.0.0",
         "illuminate/database": "^7.4",
-        "vlucas/phpdotenv": "^4.1"
+        "vlucas/phpdotenv": "^4.1",
+        "zeuxisoo/slim-whoops": "^0.7.2"
     },
     "autoload": {
         "files": [
             "./app/helpers.php"
         ],
         "psr-4": {
-            "App\\": "app"
+            "App\\": "app",
+            "Boot\\": "bootstrap"
         }
     },
     "require-dev": {

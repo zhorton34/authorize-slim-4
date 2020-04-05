@@ -1,16 +1,14 @@
 <?php
 
 use DI\Container;
-use DI\Bridge\Slim\Bridge as SlimAppFactory;
+use App\Http\HttpKernel;
 use App\Providers\ServiceProvider;
-
-try {
-    $env = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
-
-    $env->load();
-} catch (Dotenv\Exception\InvalidPathException $e) {}
+use DI\Bridge\Slim\Bridge as SlimAppFactory;
 
 $app = SlimAppFactory::create(new Container);
+
+$kernel = new HttpKernel($app);
+$kernel->bootstrapApplication();
 
 ServiceProvider::setup($app, config('app.providers'));
 
