@@ -2,6 +2,6 @@
 
 @section('content')
     <div>
-        Home Page
+        Home Page {{ env('NON_EXISTING_ENV_VALUE', 'Value Default To Me!!') }}
     </div>
 @endsection
