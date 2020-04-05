@@ -3,7 +3,6 @@
 namespace Boot\Foundation;
 
 use Slim\App;
-
 /**
  * Request Kernel (Create Kernel For Different Types Of Entry Points Into Our Application
  */
@@ -15,17 +14,22 @@ abstract class Kernel
      * Register Application Boot Strap Loaders
      * @var array
      */
-    public array $bootstrap = [
-        //
-    ];
+    public array $bootstrap = [];
 
     public function __construct(App &$app)
     {
         $this->app = $app;
+        $this->app->getContainer()->set(self::class, $this);
+        Bootstrappers\Bootstrapper::setup($this->app, $this->bootstrap);
     }
 
-    public function bootstrapApplication()
+    public static function bootstrap(App $app)
     {
-        Bootstrappers\Bootstrapper::setup($this->app, $this->bootstrap);
+        return new static($app);
+    }
+
+    public function getApplication() : App
+    {
+        return $this->app;
     }
 }

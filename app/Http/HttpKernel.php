@@ -21,19 +21,7 @@ class HttpKernel extends Kernel
      * @var array
      */
     public array $middlewareGroups = [
-       // middleware applied only on web routes
        'web' => [],
-       // middleware applied only on api routes
        'api' => []
     ];
-
-    public function bootstrapApplication()
-    {
-        parent::bootstrapApplication();
-        $this->app->getContainer()->set('middleware', [
-            'web' => $this->middlewareGroups['web'],
-            'api' => $this->middlewareGroups['api'],
-            'global' => $this->middleware,
-        ]);
-    }
 }
