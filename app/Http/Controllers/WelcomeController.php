@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Support\View;
+
 class WelcomeController
 {
-    public function index($response)
+    public function index(View $view)
     {
-        $response->getBody()->write('Welcome Controller Worked!');
+        $name = 'Clean Code Studio';
 
-        return $response;
+        return $view('auth.home', compact('name'));
     }
 
-    public function show($response, $name, $id)
+    public function show(View $view, $name, $id)
     {
-        $response->getBody()->write("Welcome {$name} you have an id of {$id}");
-
-        return $response;
+        return $view('user.show', compact('name', 'id'));
     }
 }
