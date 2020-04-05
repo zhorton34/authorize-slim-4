@@ -7,7 +7,9 @@
         "php": "^7.4",
         "ext-curl": "*",
         "ext-json": "*",
-        "php-di/slim-bridge": "^3.0"
+        "php-di/slim-bridge": "^3.0",
+        "illuminate/support": "7.0.0",
+        "illuminate/database": "^7.4"
     },
     "autoload": {
         "files": [
