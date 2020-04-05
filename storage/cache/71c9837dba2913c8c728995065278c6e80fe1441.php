@@ -1,6 +1,7 @@
 <?php $__env->startSection('content'); ?>
     <div>
-        Home Page
+        Home Page <?php echo e(env('NON_EXISTING_ENV_VALUE', 'Value Default To Me!!')); ?>
+
     </div>
 <?php $__env->stopSection(); ?>
 
