@@ -33,6 +33,7 @@ if (!function_exists('env'))
         return $value or $default;
     }
 }
+
 if (!function_exists('base_path'))
 {
     function base_path($path = '')
