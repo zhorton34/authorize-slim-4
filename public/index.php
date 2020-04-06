@@ -3,7 +3,7 @@
 /**
  * Autoload global dependencies and allow for auto-loading local dependencies via use
  */
-require __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
 /**
  * Boot up application, AKA Turn the lights on.

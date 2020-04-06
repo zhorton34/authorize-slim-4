@@ -17,6 +17,10 @@ function artisan() {
     php artisan "$@"
 }
 
+function phinx() {
+    cd ~/code && php vendor/bin/phinx $1 $2 $3 -c ./config/migrations.php
+}
+
 function dusk() {
     pids=$(pidof /usr/bin/Xvfb)
 
