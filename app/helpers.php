@@ -3,8 +3,10 @@
 /* Global Helper Functions */
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
-
+use Illuminate\Support\Collection;
 /*
+ * collect
+ * factory
  * env
  * base_path
  * config_path
@@ -20,6 +22,24 @@ use Illuminate\Support\Str;
  * data_get
  * data_set
  */
+
+if (!function_exists('collect'))
+{
+    function collect($items)
+    {
+        return new Collection($items);
+    }
+}
+
+if (!function_exists('factory'))
+{
+    function factory(string $model, int $count = 1)
+    {
+        $factory = new Factory;
+
+        return $factory($model, $count);
+    }
+}
 
 if (!function_exists('env'))
 {

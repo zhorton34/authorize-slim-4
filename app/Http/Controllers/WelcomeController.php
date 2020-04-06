@@ -9,10 +9,10 @@ class WelcomeController
 {
     public function index(View $view, User $user)
     {
-        $user = $user->find(1);
+        $users = $user->get();
         $name = 'Clean Code Studio';
 
-        return $view('auth.home', compact('name', 'user'));
+        return $view('auth.home', compact('name', 'users'));
     }
 
     public function show(View $view, $name, $id)
