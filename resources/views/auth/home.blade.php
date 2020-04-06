@@ -4,11 +4,10 @@
     <div>
         Home Page
 
-        @if($user->actingAs('Admin', 'SuperAdmin'))
+        @foreach ($users as $user)
             <pre>
                 {{ $user->name }} {{ $user->email }} {{ $user->password }}
             </pre>
-        @endif
-
+        @endforeach
     </div>
 @endsection

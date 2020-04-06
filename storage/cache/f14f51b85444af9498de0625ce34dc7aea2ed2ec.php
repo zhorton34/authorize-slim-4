@@ -2,13 +2,12 @@
     <div>
         Home Page
 
-        <?php if($user->actingAs('Admin', 'SuperAdmin')): ?>
-        <pre>
-            <?php echo e($user->name); ?> <?php echo e($user->email); ?> <?php echo e($user->password); ?>
+        <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <pre>
+                <?php echo e($user->name); ?> <?php echo e($user->email); ?> <?php echo e($user->password); ?>
 
-        </pre>
-        <?php endif; ?>
-
+            </pre>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </div>
 <?php $__env->stopSection(); ?>
 
