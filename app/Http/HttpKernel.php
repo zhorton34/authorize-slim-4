@@ -20,7 +20,9 @@ class HttpKernel extends Kernel
      * Route Group Middleware
      */
     public array $middlewareGroups = [
-        'api' => [],
+        'api' => [
+            Middleware\ApiResponseMiddleware::class
+        ],
         'web' => []
     ];
 }
