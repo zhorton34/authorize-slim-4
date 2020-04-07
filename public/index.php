@@ -8,9 +8,22 @@ require_once __DIR__ . '/../vendor/autoload.php';
 /**
  * Boot up application, AKA Turn the lights on.
  */
-$app = require_once __DIR__ . '/../bootstrap/app.php';
+$app = require base_path('bootstrap/app.php');
 
 /**
- * Passing our Request through the app
+ * Resolve The Application Http Kernel
+ */
+$kernel = $app->resolve(\App\Http\HttpKernel::class);
+
+/**
+ * Bootstrap Http Application
+ */
+$kernel->bootstrapApplication();
+
+/**
+ * Run Application
  */
 $app->run();
+
+
+

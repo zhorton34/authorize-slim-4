@@ -1,0 +1,22 @@
+#!/usr/bin/env php
+<?php
+
+require_once  __DIR__ . '/vendor/autoload.php';
+
+$app = require base_path('bootstrap/app.php');
+
+/**
+ * Make Console Kernel
+ */
+$kernel = $app->resolve(\App\Console\ConsoleKernel::class);
+
+/**
+ * Bootstrap Console Application
+ */
+$kernel->bootstrapApplication();
+
+/**
+ * Handle Application Command
+ */
+\App\Support\Console\Command::execute();
+

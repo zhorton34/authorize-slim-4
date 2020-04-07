@@ -3,8 +3,8 @@
 
 namespace App\Providers;
 
+use Boot\Foundation\App;
 use Psr\Container\ContainerInterface;
-use Slim\App;
 
 abstract class ServiceProvider
 {
@@ -20,9 +20,9 @@ abstract class ServiceProvider
     abstract public function register();
     abstract public function boot();
 
-    public function bind($key, callable $resolvable)
+    public function bind($key, callable $resolve)
     {
-        $this->container->set($key, $resolvable);
+        return $this->app->bind($key, $resolve);
     }
 
     public function resolve($key)
@@ -32,9 +32,9 @@ abstract class ServiceProvider
 
     final public static function setup(App &$app, array $providers)
     {
-        $providers = array_map(fn ($provider) => new $provider($app), $providers);
-
-        array_walk($providers, fn (ServiceProvider $provider) => $provider->register());
-        array_walk($providers, fn (ServiceProvider $provider) => $provider->boot());
+        collect($providers)
+            ->map(fn ($provider) => new $provider($app))
+            ->each(fn (ServiceProvider $provider) => $provider->register())
+            ->each(fn (ServiceProvider $provider) => $provider->boot());
     }
 }

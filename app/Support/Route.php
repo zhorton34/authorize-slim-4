@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 class Route
 {
     public static $app;
+    public static $is;
 
     public static function setup(&$app)
     {

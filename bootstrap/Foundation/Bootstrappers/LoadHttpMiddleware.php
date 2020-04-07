@@ -2,18 +2,16 @@
 
 namespace Boot\Foundation\Bootstrappers;
 
-use Boot\Foundation\Kernel;
-
 class LoadHttpMiddleware extends Bootstrapper
 {
     public function boot()
     {
-        $kernel = $this->app->getContainer()->get(Kernel::class);
+        $kernel = $this->kernel;
 
-        $this->app->getContainer()->set('middleware', fn () => [
-           'global' => $kernel->middleware,
-            'api' => $kernel->middlewareGroups['api'],
-            'web' => $kernel->middlewareGroups['web']
+        $this->app->bind('middleware', fn () => [
+            'api' => data_get($kernel, 'middlewareGroups.api'),
+            'web' => data_get($kernel, 'middlewareGroups.web'),
+            'global' => data_get($kernel, 'middleware'),
         ]);
     }
 }

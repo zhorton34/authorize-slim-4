@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Boot\Foundation;
-
 
 class HttpKernel extends Kernel
 {
@@ -21,7 +19,8 @@ class HttpKernel extends Kernel
         'web' => []
     ];
 
-    public array $bootstrap = [
+    public array $bootstrappers = [
+        Bootstrappers\LoadEnvironmentDetector::class,
         Bootstrappers\LoadEnvironmentVariables::class,
         Bootstrappers\LoadDebuggingPage::class,
         Bootstrappers\LoadAliases::class,

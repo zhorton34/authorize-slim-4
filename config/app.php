@@ -5,9 +5,9 @@ return [
     'providers' => [
         \App\Providers\DatabaseServiceProvider::class,
         \App\Providers\BladeServiceProvider::class,
-        \App\Providers\RouteServiceProvider::class
     ],
     'aliases' => [
+        'Route' => \App\Support\Route::class,
         'DB' => \Illuminate\Database\Capsule\Manager::class,
     ]
 ];

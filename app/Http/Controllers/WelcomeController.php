@@ -7,11 +7,13 @@ use App\Support\View;
 
 class WelcomeController
 {
-    public function index(View $view, User $user)
+    public function index(View $view, User $user, $request)
     {
+        $user = $user->find(1);
         $users = $user->get();
         $name = 'Clean Code Studio';
 
+        dd($request);
         return $view('auth.home', compact('name', 'users'));
     }
 

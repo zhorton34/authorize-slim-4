@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Support\RouteGroup;
 use App\Support\Route;
+use App\Support\RouteGroup;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -11,7 +11,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::setup($this->app);
 
-        $this->bind(RouteGroup::class, fn () => new RouteGroup($this->app));
+        $this->app->bind(RouteGroup::class, fn () => new RouteGroup($this->app));
     }
 
     public function boot()
@@ -20,11 +20,11 @@ class RouteServiceProvider extends ServiceProvider
         $this->webRouteGroup()->register();
     }
 
-    public function apiRouteGroup() : RouteGroup
+    protected function apiRouteGroup() : RouteGroup
     {
         $get = routes_path('api.php');
-        $add = $this->resolve('middleware');
-        $api = $this->resolve(RouteGroup::class);
+        $add = $this->app->resolve('middleware');
+        $api = $this->app->resolve(RouteGroup::class);
 
         return $api->routes($get)->prefix('/api')->middleware([
             ...$add['api'],
@@ -32,11 +32,11 @@ class RouteServiceProvider extends ServiceProvider
         ]);
     }
 
-    public function webRouteGroup() : RouteGroup
+    protected function webRouteGroup() : RouteGroup
     {
         $get = routes_path('web.php');
-        $add = $this->resolve('middleware');
-        $web = $this->resolve(RouteGroup::class);
+        $add = $this->app->make('middleware');
+        $web = $this->app->make(RouteGroup::class);
 
         return $web->routes($get)->prefix('')->middleware([
             ...$add['web'],
