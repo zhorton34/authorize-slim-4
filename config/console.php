@@ -20,6 +20,13 @@ return [
         'verbosity' => Output::VERBOSITY_VERY_VERBOSE,
 
         /**
+         *  Output::OUTPUT_NORMAL = 1;
+         *  Output::OUTPUT_RAW = 2;
+         *  Output::OUTPUT_PLAIN = 4;
+         */
+        'output_type' => Output::OUTPUT_RAW,
+
+        /**
          * Output Decorated (Bool)
          * ~~~~~~~~~~~~~~~~~~~~~~~
          */

@@ -24,6 +24,11 @@ class App extends \Slim\App
         return $this->has('bootedViaHttp') ? $this->make('bootedViaHttp') : false;
     }
 
+    public function call(...$parameters)
+    {
+        return $this->getContainer()->call(...$parameters);
+    }
+
     public function has(...$parameters)
     {
         return $this->getContainer()->has(...$parameters);

@@ -11,9 +11,6 @@ class ConsoleKernel extends Kernel
      *
      * @var array
      */
-    protected $commands = [
-        Commands\MakeMigrationCommand::class
+    public $commands = [
     ];
-
-
 }

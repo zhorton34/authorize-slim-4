@@ -1,19 +1,16 @@
 <?php
 
-
 namespace App\Console\Commands;
-
 
 abstract class HandleCommand
 {
     public $namespace;
-    public $arguments;
     public $description;
 
-    public function __construct()
+    public function arguments()
     {
-        $this->arguments = $this->arguments();
+        return [
+            // add arguments
+        ];
     }
-
-    abstract public function arguments();
 }

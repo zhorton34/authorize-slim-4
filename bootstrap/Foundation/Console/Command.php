@@ -3,8 +3,6 @@
 namespace Boot\Foundation\Console;
 
 use Boot\Foundation\App;
-use App\Support\Console\Arg;
-use App\Support\Console\Input;
 use Symfony\Component\Console\Input\ArgvInput;
 use Symfony\Component\Console\Output\ConsoleOutput;
 use Symfony\Component\Console\Input\InputDefinition;
@@ -31,20 +29,9 @@ class Command
 
     public static function bindDefinition() : InputDefinition
     {
-        return data_get(
-            Command::$definitions,
-            Command::app()->resolve('namespace')
-        );
-    }
+        $namespace = Command::app()->resolve('namespace');
 
-    public static function define($namespace, array $arguments = [])
-    {
-        Command::$definitions[$namespace] = Input::definition([
-            Arg::make($namespace)->require(),
-            ...$arguments
-        ]);
-
-        return new static;
+        return data_get(Command::$definitions, $namespace);
     }
 
     public static function shell($command)
