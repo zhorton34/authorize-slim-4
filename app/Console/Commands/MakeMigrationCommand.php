@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-class MakeMigration extends Command
+class MakeMigrationCommand extends Command
 {
     protected $name = 'make:migration';
     protected $help = 'Make a migration scaffold';
