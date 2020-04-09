@@ -2,24 +2,24 @@
 
 namespace Boot\Foundation\Bootstrappers;
 
-use Slim\App;
-
 class Bootstrapper
 {
-    public App $app;
+    public $app;
+    public $kernel;
 
-    final public function __construct(App &$app)
+    final public function __construct(&$app, &$kernel)
     {
         $this->app = $app;
+        $this->kernel = $kernel;
     }
 
-    final public static function setup(App &$app, array $loaders)
+    final public static function setup(&$app, &$kernel, array $bootstrappers)
     {
-        $loaders = array_map(fn ($loader) => new $loader($app), $loaders);
-
-        array_walk($loaders, fn (Bootstrapper $boot) => $boot->beforeBoot());
-        array_walk($loaders, fn (Bootstrapper $boot) => $boot->boot());
-        array_walk($loaders, fn (Bootstrapper $boot) => $boot->afterBoot());
+        collect($bootstrappers)
+            ->map(fn ($bootstrapper) => new $bootstrapper($app, $kernel))
+            ->each(fn (Bootstrapper $bootstrapper) => $bootstrapper->beforeBoot())
+            ->each(fn (Bootstrapper $bootstrapper) => $bootstrapper->boot())
+            ->each(fn (Bootstrapper $bootstrapper) => $bootstrapper->afterBoot());
     }
 
     public function beforeBoot()

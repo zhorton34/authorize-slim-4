@@ -2,3 +2,4 @@ vendor
 .idea
 .env
 .vagrant
+node_modules
