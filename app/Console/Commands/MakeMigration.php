@@ -2,8 +2,6 @@
 
 namespace App\Console\Commands;
 
-use App\Support\Console\Command;
-
 class MakeMigration extends Command
 {
     protected $name = 'make:migration';

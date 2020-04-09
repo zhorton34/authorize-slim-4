@@ -2,29 +2,48 @@
 
 namespace Boot\Foundation\Console;
 
-use Boot\Foundation\App;
-use Symfony\Component\Console\Application as Console;
+use Symfony\Component\Console\Input\InputArgument as Arg;
 
-class Command
+class Command extends Console
 {
-    public static $app;
-    public static $console;
+    protected $name = 'command:add-signature';
+    protected $help = 'Add command help information';
+    protected $description = 'Add command description information';
 
-    public static function app()
+    protected function require($description = '')
     {
-        return Command::$app;
+        return [Arg::REQUIRED, $description];
     }
 
-    public static function console()
+    protected function array($description, $default = [])
     {
-        return Command::$console;
+        return [Arg::IS_ARRAY, $description, $default];
     }
 
-    public static function setup(App &$app, Console $console)
+    protected function optional($description, $default = false)
     {
-        Command::$app = $app;
-        Command::$console = $console;
-
-        $app->bind(Console::class, Command::$console);
+        return $default ? [ARG::OPTIONAL, $description, $default] : [Arg::OPTIONAL, $description, $default];
     }
+
+    protected function arguments()
+    {
+        return [
+            //
+        ];
+    }
+
+    protected function configure()
+    {
+        $this->setName($this->name)->setHelp($this->help)->setDescription($this->description);
+
+        collect($this->arguments())->each(
+            fn ($options, $name) => $this->addArgument($name, ...$options)
+        );
+    }
+
+    public function handler()
+    {
+        // Handle Command
+    }
+
 }
