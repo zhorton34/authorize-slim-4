@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Support\Console\Console as Command;
+use App\Support\Console\Command;
 
 class MakeMigration extends Command
 {
@@ -18,7 +18,7 @@ class MakeMigration extends Command
         ];
     }
 
-    public function handle()
+    public function handler()
     {
         $this->output->write('Hello World');
     }

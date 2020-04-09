@@ -4,26 +4,45 @@ namespace App\Support\Console;
 
 use Illuminate\Support\Str;
 use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputArgument as Arg;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Command\Command as SymfonyCommand;
 
 class Console extends SymfonyCommand
 {
+    public static $app;
+    public static $console;
     public static $commands;
-    protected $name = 'make:command';
-    protected $help = 'The make:command allows use to scaffold new command';
-    protected $description = 'Command to make or scaffold a Slim Command Class';
-    protected $callableHandler = false;
+    protected $handler = false;
     protected InputInterface $input;
     protected OutputInterface $output;
+
+    public static function setup(&$app, &$console)
+    {
+        static::$app = $app;
+        static::$console = $console;
+    }
+
+    public static function app()
+    {
+        return static::$app;
+    }
+
+    public static function console()
+    {
+        return static::$console;
+    }
+
+    public static function commands()
+    {
+        return collect(static::$commands);
+    }
 
     public static function command($signature, callable $handler)
     {
         $command = new static;
-        $command->setHandler($handler);
 
+        $command->setHandler($handler);
         $input = explode(" ", $signature);
 
         [$name] = $input;
@@ -31,63 +50,26 @@ class Console extends SymfonyCommand
         array_shift($input);
 
         $name = fn ($arg) => Str::of($arg)->between('{', '}');
-        $add_required_argument = fn ($arg) => $command->addArgument($name($arg), InputArgument::REQUIRED);
+        $add_argument = fn ($arg) => $command->addArgument($name($arg), InputArgument::REQUIRED);
 
-        collect($input)->each($add_required_argument);
+        collect($input)->each($add_argument);
 
         static::$commands[] = &$command;
 
+        self::console()->add($command);
         return $command;
     }
 
     public function setHandler(callable $handler)
     {
-        $this->callableHandler = is_callable($handler) ?
-            $handler->bindTo($this, $this)
-            : false;
+        $this->handler = $handler->bindTo($this, $this);
     }
 
-    protected function require($description = '')
+    public function __call($method, $parameters)
     {
-        return [Arg::REQUIRED, $description];
-    }
+        throw_when($method != 'handler', "Method {$method} Does Not Exist");
 
-    protected function array($description, $default = [])
-    {
-        return [Arg::IS_ARRAY, $description, $default];
-    }
-
-    protected function optional($description, $default = false)
-    {
-        return $default ? [ARG::OPTIONAL, $description, $default] : [Arg::OPTIONAL, $description, $default];
-    }
-
-    protected function arguments()
-    {
-        return [
-            //
-        ];
-    }
-
-    protected function setup()
-    {
-        // add custom child configuration
-    }
-
-    protected function configure()
-    {
-        $this->setName($this->name)->setHelp($this->help)->setDescription($this->description);
-
-        collect($this->arguments())->each(
-            fn ($options, $name) => $this->addArgument($name, ...$options)
-        );
-
-        $this->setup();
-    }
-
-    public function handle()
-    {
-        // Handle Command
+        call_user_func($this->handler, $parameters);
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -95,11 +77,12 @@ class Console extends SymfonyCommand
         $this->input = $input;
         $this->output = $output;
 
-        $callable_handler = is_callable($this->callableHandler);
+        throw_when(
+            !method_exists($this, 'handler') and !is_callable($this->handler),
+            "Handler not defined on Command"
+        );
 
-        $callable_handler
-            ? call_user_func($this->callableHandler, [])
-            : $this->handle();
+        $this->handler();
 
         return 0;
     }

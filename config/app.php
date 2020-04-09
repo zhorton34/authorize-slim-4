@@ -4,6 +4,7 @@ return [
     'name' => env('APP_NAME', 'Slim 4 Auth App'),
     'providers' => [
         \App\Providers\DatabaseServiceProvider::class,
+        \App\Providers\ConsoleServiceProvider::class,
         \App\Providers\BladeServiceProvider::class,
     ],
     'aliases' => [

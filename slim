@@ -19,8 +19,6 @@ $app = $kernel->getApp();
 
 $console = $app->resolve(\Symfony\Component\Console\Application::class);
 
-$console->add(new \App\Console\Commands\MakeMigration());
-
 $console->run();
 /**
  * Handle Application Command

@@ -16,6 +16,6 @@ class ConsoleServiceProvider extends ServiceProvider
     {
         require routes_path('console.php');
 
-        collect(Console::$commands)->each(fn ($command) => Command::console()->add($command));
+        Console::commands()->each(fn ($command) => Command::console()->add($command));
     }
 }
