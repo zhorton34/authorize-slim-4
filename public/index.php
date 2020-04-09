@@ -11,6 +11,16 @@ require_once __DIR__ . '/../vendor/autoload.php';
 $app = require_once __DIR__ . '/../bootstrap/app.php';
 
 /**
+ * Resolve Http Kernel
+ */
+$kernel = $app->resolve(App\Http\HttpKernel::class);
+
+/**
+ * Bootstrap Our Http Application
+ */
+$kernel->bootstrapApplication();
+
+/**
  * Passing our Request through the app
  */
 $app->run();

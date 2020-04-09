@@ -2,7 +2,8 @@
 
 use App\Support\Console;
 
-Console::command('show:example {name}', function () {
-    $this->output->writeln("Hello World");
-})
-->setDescription('Show Example Command!');
+Console::command('tinker', function () {
+    $team = \App\Team::first();
+
+    $this->info("$team->name belongs to {$team->user->first_name}");
+});

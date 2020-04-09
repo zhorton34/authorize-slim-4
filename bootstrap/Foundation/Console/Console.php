@@ -4,6 +4,7 @@ namespace Boot\Foundation\Console;
 
 use Illuminate\Support\Str;
 use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Command\Command as SymfonyCommand;
 
@@ -89,7 +90,7 @@ class Console extends SymfonyCommand
         $this->output = $output;
 
         throw_when(
-            !is_callable($this->handler),
+            !is_callable($this->handler) and !method_exists($this, 'handler'),
             "No Command Handler Defined"
         );
 

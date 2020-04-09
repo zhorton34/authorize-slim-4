@@ -11,9 +11,9 @@ class LoadServiceProviders extends Bootstrapper
         $app = $this->app;
         $providers = config('app.providers');
 
-        if ($app->runningViaHttpRequest()) {
+        if ($app->bootedViaHttpRequest()) {
             $providers = [...$providers, \App\Providers\RouteServiceProvider::class];
-        } else if ($app->runningViaConsole()) {
+        } else if ($app->bootedViaConsole()) {
             $providers = [...$providers, \App\Providers\ConsoleServiceProvider::class];
         }
 
