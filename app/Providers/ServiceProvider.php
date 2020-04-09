@@ -4,14 +4,13 @@
 namespace App\Providers;
 
 use Psr\Container\ContainerInterface;
-use Slim\App;
 
 abstract class ServiceProvider
 {
-    public App $app;
+    public $app;
     public ContainerInterface $container;
 
-    final public function __construct(App &$app)
+    final public function __construct(&$app)
     {
         $this->app = $app;
         $this->container = $this->app->getContainer();
@@ -30,7 +29,7 @@ abstract class ServiceProvider
         return $this->container->get($key);
     }
 
-    final public static function setup(App &$app, array $providers)
+    final public static function setup(&$app, array $providers)
     {
         $providers = array_map(fn ($provider) => new $provider($app), $providers);
 
