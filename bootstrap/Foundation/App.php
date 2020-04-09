@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Boot\Foundation;
-
 
 class App extends \Slim\App
 {

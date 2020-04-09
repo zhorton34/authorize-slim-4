@@ -1,0 +1,36 @@
+paths:
+    bootstrap: 'bootstrap/console.php'
+    migrations: '%%PHINX_CONFIG_DIR%%/database/migrations'
+    seeds: '%%PHINX_CONFIG_DIR%%/database/seeders'
+
+environments:
+    default_migration_table: migrations_log
+    default_database: slim
+    slim:
+        adapter: mysql
+        host: localhost
+        name: slim
+        user: homestead
+        pass: 'secret'
+        port: 3306
+        charset: utf8
+
+    development:
+        adapter: mysql
+        host: localhost
+        name: development_db
+        user: root
+        pass: ''
+        port: 3306
+        charset: utf8
+
+    testing:
+        adapter: mysql
+        host: localhost
+        name: testing_db
+        user: root
+        pass: ''
+        port: 3306
+        charset: utf8
+
+version_order: creation

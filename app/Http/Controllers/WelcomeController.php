@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Team;
 use App\User;
 use App\Support\View;
 
@@ -11,8 +12,9 @@ class WelcomeController
     {
         $users = $user->get();
         $name = 'Clean Code Studio';
+        $team = $user->latest()->first()->team;
 
-        return $view('auth.home', compact('name', 'users'));
+        return $view('auth.home', compact('name', 'users', 'team'));
     }
 
     public function show(View $view, $name, $id)

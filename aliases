@@ -4,7 +4,7 @@ alias ...="cd ../.."
 alias h='cd ~'
 alias c='clear'
 alias art=artisan
-
+alias slim="php slim"
 alias codecept='vendor/bin/codecept'
 alias phpspec='vendor/bin/phpspec'
 alias phpunit='vendor/bin/phpunit'

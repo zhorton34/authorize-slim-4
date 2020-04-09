@@ -13,4 +13,4 @@ $console_kernel = new ConsoleKernel($app);
 $app->bind(HttpKernel::class, $http_kernel);
 $app->bind(ConsoleKernel::class, $console_kernel);
 
-return HttpKernel::bootstrap($app)->getApplication();
+return $app;

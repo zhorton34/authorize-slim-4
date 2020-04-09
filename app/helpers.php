@@ -22,7 +22,6 @@ use Illuminate\Support\Collection;
  * data_get
  * data_set
  */
-
 if (!function_exists('collect'))
 {
     function collect($items)

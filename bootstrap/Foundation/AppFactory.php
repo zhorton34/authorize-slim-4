@@ -3,7 +3,6 @@
 namespace Boot\Foundation;
 
 use Psr\Container\ContainerInterface;
-use Slim\App;
 use Slim\Interfaces\RouteResolverInterface;
 use Slim\Interfaces\RouteCollectorInterface;
 use Psr\Http\Message\ResponseFactoryInterface;

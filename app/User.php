@@ -7,9 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class User extends Model
 {
     protected $fillable = [
-        'first_name',
+        'email',
         'last_name',
-        'email'
+        'first_name',
+        'team_id'
     ];
 
     protected $guarded = [

@@ -13,6 +13,11 @@ abstract class Kernel
      */
     public array $bootstrappers = [];
 
+    public function __construct(&$app)
+    {
+        $this->app = $app;
+    }
+
     public function bootstrapApplication()
     {
         $app = $this->getApp();

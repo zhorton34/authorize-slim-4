@@ -13,8 +13,6 @@ use Invoker\ParameterResolver\Container\TypeHintContainerResolver;
 use Invoker\ParameterResolver\DefaultValueResolver;
 use Invoker\ParameterResolver\ResolverChain;
 use Psr\Container\ContainerInterface;
-use Slim\App;
-use Slim\Factory\AppFactory;
 use Slim\Interfaces\CallableResolverInterface;
 
 class AppFactoryBridge extends Bridge

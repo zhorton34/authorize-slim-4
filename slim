@@ -1,27 +1,23 @@
 #!/usr/bin/env php
+
 <?php
-
-require_once __DIR__ . '/vendor/autoload.php';
-
-$app = require_once base_path('bootstrap/app.php');
-
-/**
- * Make Console Kernel
- */
- $kernel = $app->resolve(\App\Console\ConsoleKernel::class);
 
 /**
  * Bootstrap Console Application
- */
-$kernel->bootstrapApplication();
+ **/
+$app = require __DIR__ . '/bootstrap/console.php';
 
 /**
- * Handle Application Command
- */
-($app->resolve(\Symfony\Component\Console\Application::class))->run();
+ * Resolve Symfony Console From Container
+ **/
+$console = $app->resolve(\Symfony\Component\Console\Application::class);
 
 /**
- * Exit Our Console
- */
+ * Run Symfony Console Application Commands
+ **/
+$console->run();
+
+/**
+ * Exit Out Of Console Application
+ **/
 exit();
-

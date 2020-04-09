@@ -17,8 +17,6 @@ class LoadConsoleEnvironment extends Bootstrapper
 
     public function boot()
     {
-        collect($this->kernel->commands)->each(
-            fn ($command) => Console::console()->add(new $command)
-        );
+
     }
 }

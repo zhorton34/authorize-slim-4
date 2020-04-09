@@ -1,8 +1,5 @@
 <?php
 
-require_once __DIR__ . '/../vendor/autoload.php';
-$app = require_once base_path('bootstrap/app.php');
-
 return [
     'paths' => [
         'migrations' => database_path('migrations'),

@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Console;
-
 
 class ConsoleKernel extends \Boot\Foundation\ConsoleKernel
 {
@@ -11,6 +9,12 @@ class ConsoleKernel extends \Boot\Foundation\ConsoleKernel
      * @var array
      */
     public $commands = [
-
+        Commands\MigrateCommand::class,
+        Commands\MakeSeederCommand::class,
+        Commands\SeedDatabaseCommand::class,
+        Commands\FreshDatabaseCommand::class,
+        Commands\MakeMigrationCommand::class,
+        Commands\DatabaseTableDisplay::class,
+        Commands\RollbackMigrationCommand::class,
     ];
 }

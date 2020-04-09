@@ -25,17 +25,17 @@ class Console extends SymfonyCommand
         static::$console = $console;
     }
 
-    public function app()
+    public static function app()
     {
         return static::$app;
     }
 
-    public function console()
+    public static function console()
     {
         return static::$console;
     }
 
-    public function commands()
+    public static function commands()
     {
         return collect(static::$commands);
     }
@@ -86,7 +86,7 @@ class Console extends SymfonyCommand
         $this->input = $input;
         $this->output = $output;
 
-        throw_when(!is_callable($this->handler), "No Command Handler Defined");
+        throw_when(!is_callable($this->handler) and !method_exists($this, 'handler'), "No Command Handler Defined");
 
         $this->handler();
 
