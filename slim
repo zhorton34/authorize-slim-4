@@ -15,14 +15,12 @@ $kernel = $app->resolve(\App\Console\ConsoleKernel::class);
  */
 $kernel->bootstrapApplication();
 
-$app = $kernel->getApp();
-
-$console = $app->resolve(\Symfony\Component\Console\Application::class);
-
-$console->run();
 /**
  * Handle Application Command
  */
-//\App\Support\Console\Command::execute();
+($app->resolve(\Symfony\Component\Console\Application::class))->run();
 
+/**
+ * Exit out of of console
+ */
 exit();
