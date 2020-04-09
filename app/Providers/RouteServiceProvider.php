@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Support\RouteGroup;
 use App\Support\Route;
+use App\Support\RouteGroup;
 
 class RouteServiceProvider extends ServiceProvider
 {
