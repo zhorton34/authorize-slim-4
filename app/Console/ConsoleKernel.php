@@ -12,5 +12,6 @@ class ConsoleKernel extends Kernel
      * @var array
      */
     public $commands = [
+        Commands\MakeMigration::class
     ];
 }

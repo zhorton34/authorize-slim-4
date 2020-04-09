@@ -3,49 +3,28 @@
 namespace Boot\Foundation\Console;
 
 use Boot\Foundation\App;
-use Symfony\Component\Console\Input\ArgvInput;
-use Symfony\Component\Console\Output\ConsoleOutput;
-use Symfony\Component\Console\Input\InputDefinition;
+use Symfony\Component\Console\Application as Console;
 
 class Command
 {
     public static $app;
-    public static $definitions;
+    public static $console;
 
-    public function __call($method, $arguments)
-    {
-        return self::$method(...$arguments);
-    }
-
-    public static function app() : App
+    public static function app()
     {
         return Command::$app;
     }
 
-    public static function setup(App &$app)
+    public static function console()
+    {
+        return Command::$console;
+    }
+
+    public static function setup(App &$app, Console $console)
     {
         Command::$app = $app;
-    }
+        Command::$console = $console;
 
-    public static function bindDefinition() : InputDefinition
-    {
-        $namespace = Command::app()->resolve('namespace');
-
-        return data_get(Command::$definitions, $namespace);
-    }
-
-    public static function shell($command)
-    {
-        return shell_exec($command);
-    }
-
-    public static function input() : ArgvInput
-    {
-        return Command::app()->resolve(ArgvInput::class);
-    }
-
-    public static function console() : ConsoleOutput
-    {
-        return Command::app()->resolve(ConsoleOutput::class);
+        $app->bind(Console::class, Command::$console);
     }
 }

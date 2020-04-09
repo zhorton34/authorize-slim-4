@@ -15,9 +15,16 @@ $kernel = $app->resolve(\App\Console\ConsoleKernel::class);
  */
 $kernel->bootstrapApplication();
 
+$app = $kernel->getApp();
+
+$console = $app->resolve(\Symfony\Component\Console\Application::class);
+
+$console->add(new \App\Console\Commands\MakeMigration());
+
+$console->run();
 /**
  * Handle Application Command
  */
-\App\Support\Console\Command::execute();
+//\App\Support\Console\Command::execute();
 
 exit();
