@@ -20,6 +20,14 @@ class RequestInput
         ];
 
         $this->attributes = $request->getParsedBody() ?? [];
+
+        $this->forgetCsrfFields();
+    }
+
+    protected function forgetCsrfFields()
+    {
+        $this->forget('csrf_name');
+        $this->forget('csrf_value');
     }
 
     public function all()

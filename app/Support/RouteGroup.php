@@ -45,7 +45,11 @@ class RouteGroup
            require $this->routes;
         });
 
-        array_walk($this->middleware, fn ($middleware) => $group->add(new $middleware));
+
+        array_walk($this->middleware, fn ($middleware) => $group->add(
+                $this->app->resolve($middleware)
+            )
+        );
 
         Route::setup($this->app);
     }

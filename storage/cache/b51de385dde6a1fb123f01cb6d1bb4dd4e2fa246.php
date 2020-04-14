@@ -1,10 +1,8 @@
 <?php $__env->startSection('content'); ?>
     <div class="flex justify-center">
         <form class="bg-white shadow-md hover:shadow-xl rounded-lg w-1/2 p-4 mt-10 flex justify-around flex-wrap items-center" method="POST" action="/register">
-            <h1 class="text-2xl text-gray-600">
-                Register
-            </h1>
-
+            <h1 class="text-2xl text-gray-600">Register</h1>
+            <?php echo "<input type='hidden' value=csrf5e9644dec2dc3 name=csrf_name /> <input type='hidden' value=bb6a10d977cd3ca1a8931435d4bef843 name=csrf_value />"; ?>
             <input
                 required
                 type='text'

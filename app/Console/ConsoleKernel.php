@@ -8,6 +8,7 @@ use Boot\Foundation\ConsoleKernel as Kernel;
 class ConsoleKernel extends Kernel
 {
     public array $commands = [
+        Commands\ViewClearCommand::class,
         Commands\MakeSeederCommand::class,
         Commands\DatabaseRunSeeders::class,
         Commands\DatabaseFreshCommand::class,

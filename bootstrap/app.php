@@ -24,5 +24,4 @@ if (!function_exists('app'))
 }
 
 $app->addRoutingMiddleware();
-
 return $app;

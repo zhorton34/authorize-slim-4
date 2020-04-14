@@ -3,10 +3,8 @@
 @section('content')
     <div class="flex justify-center">
         <form class="bg-white shadow-md hover:shadow-xl rounded-lg w-1/2 p-4 mt-10 flex justify-around flex-wrap items-center" method="POST" action="/register">
-            <h1 class="text-2xl text-gray-600">
-                Register
-            </h1>
-
+            <h1 class="text-2xl text-gray-600">Register</h1>
+            @csrf
             <input
                 required
                 type='text'

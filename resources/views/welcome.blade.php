@@ -5,6 +5,7 @@
         <h1 class="text-6xl text-gray-800 font-semibold">
             Slim 4
         </h1>
+        @csrf_fields
         <h2 class="2xl">
             Welcome to our slim 4 Authentication Tutorial!
         </h2>

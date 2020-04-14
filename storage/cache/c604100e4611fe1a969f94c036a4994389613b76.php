@@ -1,10 +1,8 @@
 <?php $__env->startSection('content'); ?>
     <div class="flex justify-center">
         <form class="bg-white shadow-md hover:shadow-xl rounded-lg w-1/2 p-4 mt-10 flex justify-around flex-wrap items-center" method="POST" action="/login">
-            <h1 class="text-2xl text-gray-600">
-                Logout
-            </h1>
-
+            <h1 class="text-2xl text-gray-600">Logout</h1>
+            <?php echo "<input type='hidden' value=csrf5e9644dc4589b name=csrf_name /> <input type='hidden' value=0590cb14b6d80ed07a191fde15df96fc name=csrf_value />"; ?>
             <input
                 required
                 type="email"
