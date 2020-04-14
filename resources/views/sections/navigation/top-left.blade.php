@@ -1,17 +1,7 @@
 @include('sections.navigation.logo')
 
-<a href="#home">
-    Home
-</a>
-
-<a href="#about">
-    About
-</a>
-
-<a href="#contact">
-    Contact
-</a>
-
-<a href="#another">
-    Another Link
-</a>
+@if (Auth::check())
+    <a href="/home">
+        Home
+    </a>
+@endif

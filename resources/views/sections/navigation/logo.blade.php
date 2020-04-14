@@ -1,3 +1,3 @@
-<div id="logo">
+<a href='/' id="logo">
     Slim
-</div>
+</a>

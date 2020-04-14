@@ -7,6 +7,7 @@ return [
         \App\Providers\BladeServiceProvider::class
     ],
     'aliases' => [
+        'Auth' => \App\Support\Auth::class,
         'DB' => \Illuminate\Database\Capsule\Manager::class,
     ]
 ];
