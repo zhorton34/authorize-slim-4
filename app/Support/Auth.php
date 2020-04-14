@@ -42,6 +42,12 @@ class Auth
 
     public static function user()
     {
+        $user_in_session = isset($_SESSION['user']);
+
+        if (!$user_in_session) {
+            return false;
+        }
+
         $query = User::where($_SESSION['user']);
 
         return $query->exists() ? $query->first() : false;
@@ -54,6 +60,6 @@ class Auth
 
     public static function guest() : bool
     {
-        return (bool) !self::check();
+        return (bool) self::user() === false;
     }
 }
