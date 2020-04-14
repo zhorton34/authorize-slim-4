@@ -5,13 +5,16 @@
 @import "tailwindcss/utilities";
 
 #content {
-  height: 100vh !important;
-  width: 100vw !important;
   padding: 10px;
-  background-color: #f5f5f5 !important
+  height: 100vh !important;
+  width: 100% !important;
+  background-color: #fff !important;
+  overflow-x: hidden !important;
 }
 
 nav  {
+  height: 100% !important;
+  width: 100% !important;
   background-color: #272936 !important;
   div {
     * {
