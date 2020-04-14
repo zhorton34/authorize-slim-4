@@ -12829,14 +12829,26 @@ window.app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 
 /***/ }),
 
+/***/ "./resources/sass/app.scss":
+/*!*********************************!*\
+  !*** ./resources/sass/app.scss ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ 0:
-/*!************************************!*\
-  !*** multi ./resources/js/main.js ***!
-  \************************************/
+/*!**************************************************************!*\
+  !*** multi ./resources/js/main.js ./resources/sass/app.scss ***!
+  \**************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/zhorton/tutorials/authorize-slim-4/resources/js/main.js */"./resources/js/main.js");
+__webpack_require__(/*! /Users/zhorton/tutorials/authorize-slim-4/resources/js/main.js */"./resources/js/main.js");
+module.exports = __webpack_require__(/*! /Users/zhorton/tutorials/authorize-slim-4/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
