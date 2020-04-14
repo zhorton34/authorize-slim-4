@@ -8,5 +8,6 @@ return [
     ],
     'aliases' => [
         'DB' => \Illuminate\Database\Capsule\Manager::class,
+        'Auth' => \Boot\Foundation\Authentication\Auth::class,
     ]
 ];

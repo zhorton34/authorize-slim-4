@@ -37,6 +37,7 @@ class MakeUsersTableMigration extends AbstractMigration
             ->addColumn('last_name', 'string', ['limit' => 128])
             ->addColumn('email', 'string', ['limit' => 128])
             ->addColumn('password', 'string', ['limit' => 128])
+
             ->addTimestamps()
             ->create();
     }

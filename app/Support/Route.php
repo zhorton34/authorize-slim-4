@@ -30,10 +30,18 @@ class Route
 
     public static function resolveViaController($action)
     {
+        $controller = false;
         $class = Str::before($action, '@');
         $method = Str::after($action, '@');
+        $namespaces = config('routing.controllers.namespaces');
 
-        $controller = config('routing.controllers.namespace') . $class;
+        foreach($namespaces as $namespace) {
+            $controller = class_exists($namespace . $class)
+                ? $namespace . $class
+                : $controller;
+        }
+
+        throw_when(!$controller, "Controller {$class}@{$method} not resolvable");
 
         return [$controller, $method];
     }
