@@ -19,21 +19,12 @@ class LoginController
 
         $rules = [
             'email' => 'required|email',
-            'will_fail' => 'required|email',
             'password' => 'required|string'
         ];
-
-        /** Override Validation Rule Messages Defined in languages/en/validation.php
-         * $messages = [
-         *    'will_fail.required' => ':attribute Whoops ~ its required',
-         *    'will_fail.email' => ':attribute whoops ~ must be an email'
-         * ];
-        **/
 
         $validator = validator(
             $form,
             $rules,
-            // $messages
         );
 
         if ($validator->fails()) {
