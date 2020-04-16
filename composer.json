@@ -1,4 +1,5 @@
 {
+    "keywords": ["Php", "Slim 4", "Php Authentication", "Slim 4 Authentication"],
     "require": {
         "slim/slim": "4.*",
         "slim/psr7": "^1.0",
