@@ -3,6 +3,10 @@
 return [
     'name' => env('APP_NAME', 'Slim 4 Auth App'),
     'providers' => [
+        /* Booted Foundation Service Providers...  */
+        \Boot\Foundation\Providers\FileSystemServiceProvider::class,
+
+        /* App Service Providers... */
         \App\Providers\DatabaseServiceProvider::class,
         \App\Providers\BladeServiceProvider::class
     ],
