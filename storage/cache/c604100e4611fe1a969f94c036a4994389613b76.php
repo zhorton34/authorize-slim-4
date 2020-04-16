@@ -1,16 +1,11 @@
 <?php $__env->startSection('content'); ?>
     <div class="flex justify-center">
-
-
-        <?php echo e($_SESSION['errors']); ?>
-
-
         <form class="bg-white shadow-md hover:shadow-xl rounded-lg w-1/2 p-4 mt-10 flex justify-around flex-wrap items-center" method="POST" action="/login">
             <h1 class="text-2xl text-gray-600">
                 Logout
             </h1>
 
-            <?php echo "<input type='hidden' name='csrf_value' value='cf5ebfd3d562e4dd985f9cce04ac5bc3' /> \n <input type='hidden' name='csrf_name' value='csrf5e97f46f130f3' />"; ?>
+            <?php echo "<input type='hidden' name='csrf_value' value='80dd8da2270ba9f5d2eda8cd5c576a19' /> \n <input type='hidden' name='csrf_name' value='csrf5e97fb1b183ff' />"; ?>
 
             <input
                 type="email"
