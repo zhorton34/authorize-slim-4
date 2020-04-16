@@ -7,6 +7,8 @@
                 Register
             </h1>
 
+            @csrf
+
             <input
                 required
                 type='text'

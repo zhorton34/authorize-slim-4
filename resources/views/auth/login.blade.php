@@ -8,6 +8,8 @@
                 Logout
             </h1>
 
+            @csrf
+
             <input
                 required
                 type="email"
