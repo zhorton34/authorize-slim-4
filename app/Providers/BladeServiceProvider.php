@@ -12,8 +12,6 @@ class BladeServiceProvider extends ServiceProvider
 {
     public function directives(Blade $blade)
     {
-        $blade->directive('example', fn () => "<?php echo 'hello world'; ?>");
-
         $blade->directive('csrf', function () {
            $token = $this->app->resolve('csrf');
            $stub = "<input type='hidden' name='{replace}' value='{replace}' />";
