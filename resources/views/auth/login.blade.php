@@ -10,7 +10,6 @@
             @csrf
 
             <input
-                required
                 type="email"
                 name="email"
                 placeholder="Email Address"
@@ -18,7 +17,6 @@
             />
 
             <input
-                required
                 type='password'
                 name='password'
                 placeholder="Password"

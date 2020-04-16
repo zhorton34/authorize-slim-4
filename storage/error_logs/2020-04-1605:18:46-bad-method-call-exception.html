@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+    <head>
+        <title>
+            Slim 4 Authentication
+        </title>
+
+        <link rel="stylesheet" href="css/app.css">
+    </head>
+    <body>
+        <div id="app">
+            <nav class="inset-x-0 top-0 h-20 flex items-center justify-between fixed-top">
+    <div class="flex justify-around items-center">
+        <a href='/' id="logo">
+    Slim
+</a>
+
+    </div>
+
+    <div class="flex justify-end items-center">
+        <a href="/register">
+        Register
+    </a>
+    <a href="/login">
+        Login
+    </a>
+    </div>
+</nav>
+
+            <div id="content">
+                    <div class="pl-8 pr-8">
+        <div class="bg-red-500 p-8">
+            <h1 class="text-white text-5xl">
+                Whoops! BadMethodCallException
+            </h1>
+            <hr>
+            <h2 class="text-white lg:text-xl">
+                Http Code: 500
+            </h2>
+        </div>
+
+        <div class="flex flex-wrap justify-between items-start">
+            <div class="text-white mt-6 bg-gray-700 p-10 text-xl w-40% mr-2 ml-2">
+                <h3 class="xl:text-white">
+                    Exception Message
+                </h3>
+                <hr>
+                Method Illuminate\Translation\Translator::make does not exist.
+            </div>
+
+
+            <div class="text-white mt-6 bg-gray-700 p-10 text-xl w-40% mr-2 ml-2">
+                <h3 class="xl:text-white">
+                    Exception Request Input
+                </h3>
+                <hr>
+                <ul>
+                                            <li>
+                            <strong>csrf_value</strong>: 46222054dca82de9ea03575a1ed13ee3
+                        </li>
+                                            <li>
+                            <strong>csrf_name</strong>: csrf5e97d7474a7ce
+                        </li>
+                                            <li>
+                            <strong>email</strong>: first.lastname@example.com
+                        </li>
+                                            <li>
+                            <strong>password</strong>: secret
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+    </div>
+            </div>
+        </div>
+
+        <script src="/js/main.js"></script>
+    </body>
+</html>

@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+    <head>
+        <title>
+            Slim 4 Authentication
+        </title>
+
+        <link rel="stylesheet" href="css/app.css">
+    </head>
+    <body>
+        <div id="app">
+            <nav class="inset-x-0 top-0 h-20 flex items-center justify-between fixed-top">
+    <div class="flex justify-around items-center">
+        <a href='/' id="logo">
+    Slim
+</a>
+
+    </div>
+
+    <div class="flex justify-end items-center">
+        <a href="/register">
+        Register
+    </a>
+    <a href="/login">
+        Login
+    </a>
+    </div>
+</nav>
+
+            <div id="content">
+                    <div class="bg-red-500 p-4">
+        <h1 class="text-white text-5xl">
+            Whoops! BadMethodCallException
+        </h1>
+        <hr>
+        <h2 class="text-white lg:text-xl">
+            Http Code: 500
+        </h2>
+    </div>
+
+    <div class="text-white mt-6 bg-gray-700 p-10 text-xl">
+        Method Illuminate\Translation\Translator::make does not exist.
+    </div>
+
+
+    <div class="text-white mt-6 bg-gray-700 p-10 text-xl">
+        <template>
+            <ul>
+                <li v-for="(name, value) in JSON.parse('{"csrf_value":"46222054dca82de9ea03575a1ed13ee3","csrf_name":"csrf5e97d7474a7ce","email":"first.lastname@example.com","password":"secret"}')">
+                    {{ name }}: {{ value }}
+                </li>
+            </ul>
+        </template>
+    </div>
+            </div>
+        </div>
+
+        <script src="/js/main.js"></script>
+    </body>
+</html>

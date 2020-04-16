@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+    <head>
+        <title>
+            Slim 4 Authentication
+        </title>
+
+        <link rel="stylesheet" href="css/app.css">
+    </head>
+    <body>
+        <div id="app">
+            <nav class="inset-x-0 top-0 h-20 flex items-center justify-between fixed-top">
+    <div class="flex justify-around items-center">
+        <a href='/' id="logo">
+    Slim
+</a>
+
+    </div>
+
+    <div class="flex justify-end items-center">
+        <a href="/register">
+        Register
+    </a>
+    <a href="/login">
+        Login
+    </a>
+    </div>
+</nav>
+
+            <div id="content">
+                    <div class="pl-8 pr-8">
+        <div class="bg-red-500 shadow-md hover:shadow-xl rounded-lg border-2 p-6 mt-8">
+            <h1 class="text-white text-5xl">
+                Whoops! BadMethodCallException
+            </h1>
+            <hr>
+            <h2 class="text-white lg:text-xl mt-4">
+                Http Code: 500
+            </h2>
+        </div>
+
+        <hr>
+
+        <div class="flex flex-wrap justify-between items-start bg-gray-200 shadow-md hover:shadow-xl rounded-lg border-2 p-6 mt-8">
+            <div class="text-gray-700 mt-6 p-10 text-xl w-45% mr-2 ml-2 bg-white shadow-md hover:shadow-xl rounded-lg border-2">
+                <h3 class="xl:text-gray-800">
+                    Exception Message
+                </h3>
+                <hr>
+                Method Illuminate\Translation\Translator::make does not exist.
+            </div>
+
+
+            <div class="text-gray-700 mt-6 p-10 text-xl w-45% mr-2 ml-2 bg-white shadow-md hover:shadow-xl rounded-lg border-2">
+                <h3 class="xl:text-gray-800">
+                    Exception Request Input
+                </h3>
+                <hr>
+                <ul>
+                                            <li>
+                            <strong>csrf_value</strong>: 46222054dca82de9ea03575a1ed13ee3
+                        </li>
+                                            <li>
+                            <strong>csrf_name</strong>: csrf5e97d7474a7ce
+                        </li>
+                                            <li>
+                            <strong>email</strong>: first.lastname@example.com
+                        </li>
+                                            <li>
+                            <strong>password</strong>: secret
+                        </li>
+                                    </ul>
+            </div>
+
+            <div class="text-gray-700 mt-6 p-10 text-xl w-45% mr-2 ml-2 bg-white shadow-md hover:shadow-xl rounded-lg border-2">
+                <h3 class="xl:text-gray-800">
+                    Stack Trace
+                </h3>
+                <hr>
+                <ul>
+                                            <li>{"function":"__call","class":"Illuminate\\Translation\\Translator","type":"-\u003E"}</li>
+                                            <li>{"file":"\/home\/vagrant\/code\/bootstrap\/Foundation\/Http\/ValidatorFactory.php","line":18,"function":"call_user_func_array"}</li>
+                                            <li>{"file":"\/home\/vagrant\/code\/app\/helpers.php","line":33,"function":"__call","class":"Boot\\Foundation\\Http\\ValidatorFactory","type":"-\u003E"}</li>
+                                            <li>{"file":"\/home\/vagrant\/code\/app\/Http\/Controllers\/LoginController.php","line":20,"function":"validator"}</li>
+                                            <li>{"function":"store","class":"App\\Http\\Controllers\\LoginController","type":"-\u003E"}</li>
+                                            <li>{"file":"\/home\/vagrant\/code\/vendor\/php-di\/invoker\/src\/Invoker.php","line":82,"function":"call_user_func_array"}</li>
+                                            <li>{"file":"\/home\/vagrant\/code\/vendor\/php-di\/slim-bridge\/src\/ControllerInvoker.php","line":47,"function":"call","class":"Invoker\\Invoker","type":"-\u003E"}</li>
+                                            <li>{"file":"\/home\/vagrant\/code\/vendor\/slim\/slim\/Slim\/Routing\/Route.php","line":381,"function":"__invoke","class":"DI\\Bridge\\Slim\\ControllerInvoker","type":"-\u003E"}</li>
+                                            <li>{"file":"\/home\/vagrant\/code\/app\/Http\/Middleware\/RedirectIfAuthenticatedMiddleware.php","line":17,"function":"handle","class":"Slim\\Routing\\Route","type":"-\u003E"}</li>
+                                            <li>{"file":"\/home\/vagrant\/code\/vendor\/slim\/slim\/Slim\/MiddlewareDispatcher.php","line":245,"function":"__invoke","class":"App\\Http\\Middleware\\RedirectIfAuthenticatedMiddleware","type":"-\u003E"}</li>
+                                            <li>{"file":"\/home\/vagrant\/code\/vendor\/slim\/slim\/Slim\/MiddlewareDispatcher.php","line":81,"function":"handle","class":"class@anonymous\u0000\/home\/vagrant\/code\/vendor\/slim\/slim\/Slim\/MiddlewareDispatcher.php0x7f189d497f4f","type":"-\u003E"}</li>
+                                            <li>{"file":"\/home\/vagrant\/code\/app\/Http\/Middleware\/RouteContextMiddleware.php","line":25,"function":"handle","class":"Slim\\MiddlewareDispatcher","type":"-\u003E"}</li>
+                                            <li>{"file":"\/home\/vagrant\/code\/vendor\/slim\/slim\/Slim\/MiddlewareDispatcher.php","line":283,"function":"__invoke","class":"App\\Http\\Middleware\\RouteContextMiddleware","type":"-\u003E"}</li>
+                                            <li>{"file":"\/home\/vagrant\/code\/vendor\/slim\/csrf\/src\/Guard.php","line":438,"function":"handle","class":"class@anonymous\u0000\/home\/vagrant\/code\/vendor\/slim\/slim\/Slim\/MiddlewareDispatcher.php0x7f189d4983c8","type":"-\u003E"}</li>
+                                            <li>{"file":"\/home\/vagrant\/code\/vendor\/slim\/slim\/Slim\/MiddlewareDispatcher.php","line":140,"function":"process","class":"Slim\\Csrf\\Guard","type":"-\u003E"}</li>
+                                            <li>{"file":"\/home\/vagrant\/code\/vendor\/slim\/slim\/Slim\/MiddlewareDispatcher.php","line":81,"function":"handle","class":"class@anonymous\u0000\/home\/vagrant\/code\/vendor\/slim\/slim\/Slim\/MiddlewareDispatcher.php0x7f189d496fe6","type":"-\u003E"}</li>
+                                            <li>{"file":"\/home\/vagrant\/code\/vendor\/slim\/slim\/Slim\/Routing\/Route.php","line":341,"function":"handle","class":"Slim\\MiddlewareDispatcher","type":"-\u003E"}</li>
+                                            <li>{"file":"\/home\/vagrant\/code\/vendor\/slim\/slim\/Slim\/Routing\/RouteRunner.php","line":84,"function":"run","class":"Slim\\Routing\\Route","type":"-\u003E"}</li>
+                                            <li>{"file":"\/home\/vagrant\/code\/vendor\/slim\/slim\/Slim\/Middleware\/RoutingMiddleware.php","line":60,"function":"handle","class":"Slim\\Routing\\RouteRunner","type":"-\u003E"}</li>
+                                            <li>{"file":"\/home\/vagrant\/code\/vendor\/slim\/slim\/Slim\/MiddlewareDispatcher.php","line":140,"function":"process","class":"Slim\\Middleware\\RoutingMiddleware","type":"-\u003E"}</li>
+                                            <li>{"file":"\/home\/vagrant\/code\/vendor\/zeuxisoo\/slim-whoops\/src\/Zeuxisoo\/Whoops\/Slim\/WhoopsMiddleware.php","line":40,"function":"handle","class":"class@anonymous\u0000\/home\/vagrant\/code\/vendor\/slim\/slim\/Slim\/MiddlewareDispatcher.php0x7f189d496fe6","type":"-\u003E"}</li>
+                                            <li>{"file":"\/home\/vagrant\/code\/vendor\/slim\/slim\/Slim\/MiddlewareDispatcher.php","line":140,"function":"process","class":"Zeuxisoo\\Whoops\\Slim\\WhoopsMiddleware","type":"-\u003E"}</li>
+                                            <li>{"file":"\/home\/vagrant\/code\/vendor\/slim\/slim\/Slim\/MiddlewareDispatcher.php","line":81,"function":"handle","class":"class@anonymous\u0000\/home\/vagrant\/code\/vendor\/slim\/slim\/Slim\/MiddlewareDispatcher.php0x7f189d496fe6","type":"-\u003E"}</li>
+                                            <li>{"file":"\/home\/vagrant\/code\/vendor\/slim\/slim\/Slim\/App.php","line":211,"function":"handle","class":"Slim\\MiddlewareDispatcher","type":"-\u003E"}</li>
+                                            <li>{"file":"\/home\/vagrant\/code\/vendor\/slim\/slim\/Slim\/App.php","line":195,"function":"handle","class":"Slim\\App","type":"-\u003E"}</li>
+                                            <li>{"file":"\/home\/vagrant\/code\/public\/index.php","line":31,"function":"run","class":"Slim\\App","type":"-\u003E"}</li>
+                                    </ul>
+            </div>
+        </div>
+    </div>
+            </div>
+        </div>
+
+        <script src="/js/main.js"></script>
+    </body>
+</html>

@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+    <head>
+        <title>
+            Slim 4 Authentication
+        </title>
+
+        <link rel="stylesheet" href="css/app.css">
+    </head>
+    <body>
+        <div id="app">
+            <nav class="inset-x-0 top-0 h-20 flex items-center justify-between fixed-top">
+    <div class="flex justify-around items-center">
+        <a href='/' id="logo">
+    Slim
+</a>
+
+    </div>
+
+    <div class="flex justify-end items-center">
+        <a href="/register">
+        Register
+    </a>
+    <a href="/login">
+        Login
+    </a>
+    </div>
+</nav>
+
+            <div id="content">
+                    <div class="bg-red-500 p-4">
+        <h1 class="text-white text-5xl">
+            Whoops! Whoops\Exception\ErrorException
+        </h1>
+        <hr>
+        <p class="text-white mt-6 bg-gray-700 p-10 text-xl">
+            Undefined property: Whoops\Exception\ErrorException::$debug_message
+        </p>
+        <template v-html="<br />
+<font size='1'><table class='xdebug-error xe-notice' dir='ltr' border='1' cellspacing='0' cellpadding='1'>
+<tr><th align='left' bgcolor='#f57900' colspan="5"><span style='background-color: #cc0000; color: #fce94f; font-size: x-large;'>( ! )</span> Notice: Undefined property: Whoops\Exception\ErrorException::$debug_message in /home/vagrant/code/storage/cache/9f25a8fa15a7f383c1bf4095fe30fbf208c8c340.php on line <i>12</i></th></tr>
+<tr><th align='left' bgcolor='#e9b96e' colspan='5'>Call Stack</th></tr>
+<tr><th align='center' bgcolor='#eeeeec'>#</th><th align='left' bgcolor='#eeeeec'>Time</th><th align='left' bgcolor='#eeeeec'>Memory</th><th align='left' bgcolor='#eeeeec'>Function</th><th align='left' bgcolor='#eeeeec'>Location</th></tr>
+<tr><td bgcolor='#eeeeec' align='center'>1</td><td bgcolor='#eeeeec' align='center'>2.1000</td><td bgcolor='#eeeeec' align='right'>1626408</td><td bgcolor='#eeeeec'>Whoops\Run->handleShutdown(  )</td><td title='/home/vagrant/code/vendor/filp/whoops/src/Whoops/Run.php' bgcolor='#eeeeec'>.../Run.php<b>:</b>0</td></tr>
+<tr><td bgcolor='#eeeeec' align='center'>2</td><td bgcolor='#eeeeec' align='center'>2.1000</td><td bgcolor='#eeeeec' align='right'>1628304</td><td bgcolor='#eeeeec'>Whoops\Run->handleError(  )</td><td title='/home/vagrant/code/vendor/filp/whoops/src/Whoops/Run.php' bgcolor='#eeeeec'>.../Run.php<b>:</b>408</td></tr>
+<tr><td bgcolor='#eeeeec' align='center'>3</td><td bgcolor='#eeeeec' align='center'>2.1000</td><td bgcolor='#eeeeec' align='right'>1629624</td><td bgcolor='#eeeeec'>Whoops\Run->handleException(  )</td><td title='/home/vagrant/code/vendor/filp/whoops/src/Whoops/Run.php' bgcolor='#eeeeec'>.../Run.php<b>:</b>378</td></tr>
+<tr><td bgcolor='#eeeeec' align='center'>4</td><td bgcolor='#eeeeec' align='center'>2.1001</td><td bgcolor='#eeeeec' align='right'>1646512</td><td bgcolor='#eeeeec'>Whoops\Handler\CallbackHandler->handle(  )</td><td title='/home/vagrant/code/vendor/filp/whoops/src/Whoops/Run.php' bgcolor='#eeeeec'>.../Run.php<b>:</b>296</td></tr>
+<tr><td bgcolor='#eeeeec' align='center'>5</td><td bgcolor='#eeeeec' align='center'>2.1001</td><td bgcolor='#eeeeec' align='right'>1646512</td><td bgcolor='#eeeeec'>Boot\Foundation\Bootstrappers\LoadDebuggingPage->Boot\Foundation\Bootstrappers\{closure:/home/vagrant/code/bootstrap/Foundation/Bootstrappers/LoadDebuggingPage.php:16-32}(  )</td><td title='/home/vagrant/code/vendor/filp/whoops/src/Whoops/Handler/CallbackHandler.php' bgcolor='#eeeeec'>.../CallbackHandler.php<b>:</b>50</td></tr>
+<tr><td bgcolor='#eeeeec' align='center'>6</td><td bgcolor='#eeeeec' align='center'>2.1004</td><td bgcolor='#eeeeec' align='right'>1647048</td><td bgcolor='#eeeeec'>Illuminate\View\View->render(  )</td><td title='/home/vagrant/code/bootstrap/Foundation/Bootstrappers/LoadDebuggingPage.php' bgcolor='#eeeeec'>.../LoadDebuggingPage.php<b>:</b>22</td></tr>
+<tr><td bgcolor='#eeeeec' align='center'>7</td><td bgcolor='#eeeeec' align='center'>2.1004</td><td bgcolor='#eeeeec' align='right'>1647048</td><td bgcolor='#eeeeec'>Illuminate\View\View->renderContents(  )</td><td title='/home/vagrant/code/vendor/illuminate/view/View.php' bgcolor='#eeeeec'>.../View.php<b>:</b>91</td></tr>
+<tr><td bgcolor='#eeeeec' align='center'>8</td><td bgcolor='#eeeeec' align='center'>2.1004</td><td bgcolor='#eeeeec' align='right'>1647048</td><td bgcolor='#eeeeec'>Illuminate\View\View->getContents(  )</td><td title='/home/vagrant/code/vendor/illuminate/view/View.php' bgcolor='#eeeeec'>.../View.php<b>:</b>122</td></tr>
+<tr><td bgcolor='#eeeeec' align='center'>9</td><td bgcolor='#eeeeec' align='center'>2.1004</td><td bgcolor='#eeeeec' align='right'>1647424</td><td bgcolor='#eeeeec'>Illuminate\View\Engines\CompilerEngine->get(  )</td><td title='/home/vagrant/code/vendor/illuminate/view/View.php' bgcolor='#eeeeec'>.../View.php<b>:</b>139</td></tr>
+<tr><td bgcolor='#eeeeec' align='center'>10</td><td bgcolor='#eeeeec' align='center'>2.1029</td><td bgcolor='#eeeeec' align='right'>1647568</td><td bgcolor='#eeeeec'>Illuminate\View\Engines\CompilerEngine->evaluatePath(  )</td><td title='/home/vagrant/code/vendor/illuminate/view/Engines/CompilerEngine.php' bgcolor='#eeeeec'>.../CompilerEngine.php<b>:</b>57</td></tr>
+<tr><td bgcolor='#eeeeec' align='center'>11</td><td bgcolor='#eeeeec' align='center'>2.1059</td><td bgcolor='#eeeeec' align='right'>1667064</td><td bgcolor='#eeeeec'>include( <font color='#00bb00'>'/home/vagrant/code/storage/cache/9f25a8fa15a7f383c1bf4095fe30fbf208c8c340.php'</font> )</td><td title='/home/vagrant/code/vendor/illuminate/view/Engines/PhpEngine.php' bgcolor='#eeeeec'>.../PhpEngine.php<b>:</b>41</td></tr>
+<tr><td bgcolor='#eeeeec' align='center'>12</td><td bgcolor='#eeeeec' align='center'>2.1059</td><td bgcolor='#eeeeec' align='right'>1685016</td><td bgcolor='#eeeeec'>Whoops\Run->handleError(  )</td><td title='/home/vagrant/code/storage/cache/9f25a8fa15a7f383c1bf4095fe30fbf208c8c340.php' bgcolor='#eeeeec'>.../9f25a8fa15a7f383c1bf4095fe30fbf208c8c340.php<b>:</b>12</td></tr>
+<tr><td bgcolor='#eeeeec' align='center'>13</td><td bgcolor='#eeeeec' align='center'>2.1059</td><td bgcolor='#eeeeec' align='right'>1690792</td><td bgcolor='#eeeeec'>Whoops\Run->handleException(  )</td><td title='/home/vagrant/code/vendor/filp/whoops/src/Whoops/Run.php' bgcolor='#eeeeec'>.../Run.php<b>:</b>378</td></tr>
+<tr><td bgcolor='#eeeeec' align='center'>14</td><td bgcolor='#eeeeec' align='center'>2.1059</td><td bgcolor='#eeeeec' align='right'>1707792</td><td bgcolor='#eeeeec'>Whoops\Handler\CallbackHandler->handle(  )</td><td title='/home/vagrant/code/vendor/filp/whoops/src/Whoops/Run.php' bgcolor='#eeeeec'>.../Run.php<b>:</b>296</td></tr>
+<tr><td bgcolor='#eeeeec' align='center'>15</td><td bgcolor='#eeeeec' align='center'>2.1060</td><td bgcolor='#eeeeec' align='right'>1707792</td><td bgcolor='#eeeeec'>Boot\Foundation\Bootstrappers\LoadDebuggingPage->Boot\Foundation\Bootstrappers\{closure:/home/vagrant/code/bootstrap/Foundation/Bootstrappers/LoadDebuggingPage.php:16-32}(  )</td><td title='/home/vagrant/code/vendor/filp/whoops/src/Whoops/Handler/CallbackHandler.php' bgcolor='#eeeeec'>.../CallbackHandler.php<b>:</b>50</td></tr>
+<tr><td bgcolor='#eeeeec' align='center'>16</td><td bgcolor='#eeeeec' align='center'>2.1061</td><td bgcolor='#eeeeec' align='right'>1708648</td><td bgcolor='#eeeeec'>Illuminate\View\View->render(  )</td><td title='/home/vagrant/code/bootstrap/Foundation/Bootstrappers/LoadDebuggingPage.php' bgcolor='#eeeeec'>.../LoadDebuggingPage.php<b>:</b>22</td></tr>
+<tr><td bgcolor='#eeeeec' align='center'>17</td><td bgcolor='#eeeeec' align='center'>2.1061</td><td bgcolor='#eeeeec' align='right'>1708648</td><td bgcolor='#eeeeec'>Illuminate\View\View->renderContents(  )</td><td title='/home/vagrant/code/vendor/illuminate/view/View.php' bgcolor='#eeeeec'>.../View.php<b>:</b>91</td></tr>
+<tr><td bgcolor='#eeeeec' align='center'>18</td><td bgcolor='#eeeeec' align='center'>2.1061</td><td bgcolor='#eeeeec' align='right'>1708648</td><td bgcolor='#eeeeec'>Illuminate\View\View->getContents(  )</td><td title='/home/vagrant/code/vendor/illuminate/view/View.php' bgcolor='#eeeeec'>.../View.php<b>:</b>122</td></tr>
+<tr><td bgcolor='#eeeeec' align='center'>19</td><td bgcolor='#eeeeec' align='center'>2.1061</td><td bgcolor='#eeeeec' align='right'>1709024</td><td bgcolor='#eeeeec'>Illuminate\View\Engines\CompilerEngine->get(  )</td><td title='/home/vagrant/code/vendor/illuminate/view/View.php' bgcolor='#eeeeec'>.../View.php<b>:</b>139</td></tr>
+<tr><td bgcolor='#eeeeec' align='center'>20</td><td bgcolor='#eeeeec' align='center'>2.1102</td><td bgcolor='#eeeeec' align='right'>1709136</td><td bgcolor='#eeeeec'>Illuminate\View\Engines\CompilerEngine->evaluatePath(  )</td><td title='/home/vagrant/code/vendor/illuminate/view/Engines/CompilerEngine.php' bgcolor='#eeeeec'>.../CompilerEngine.php<b>:</b>57</td></tr>
+<tr><td bgcolor='#eeeeec' align='center'>21</td><td bgcolor='#eeeeec' align='center'>2.1115</td><td bgcolor='#eeeeec' align='right'>1728952</td><td bgcolor='#eeeeec'>include( <font color='#00bb00'>'/home/vagrant/code/storage/cache/9f25a8fa15a7f383c1bf4095fe30fbf208c8c340.php'</font> )</td><td title='/home/vagrant/code/vendor/illuminate/view/Engines/PhpEngine.php' bgcolor='#eeeeec'>.../PhpEngine.php<b>:</b>41</td></tr>
+</table></font>
+"></template>
+    </div>
+            </div>
+        </div>
+
+        <script src="/js/main.js"></script>
+    </body>
+</html>

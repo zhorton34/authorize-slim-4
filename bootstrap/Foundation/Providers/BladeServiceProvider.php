@@ -2,7 +2,6 @@
 
 namespace Boot\Foundation\Providers;
 
-use App\Providers\ServiceProvider;
 use Jenssegers\Blade\Blade;
 
 class BladeServiceProvider extends ServiceProvider
@@ -15,25 +14,13 @@ class BladeServiceProvider extends ServiceProvider
 
         $blade = &$this->blade;
 
-        $this->directives($blade);
+        if (method_exists($this, 'directives'))
+        {
+            $this->directives($blade);
+        }
 
         $this->app->bind(Blade::class, $blade);
 
         $this->blade = $this->app->resolve(Blade::class);
-    }
-
-    public function directives(Blade $blade)
-    {
-        // register blade directives
-    }
-
-    public function register()
-    {
-
-    }
-
-    public function boot()
-    {
-
     }
 }
