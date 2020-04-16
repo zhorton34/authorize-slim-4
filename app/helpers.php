@@ -5,6 +5,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Illuminate\Support\Collection;
 /*
+ * validator
  * asset
  * redirect
  * collect
@@ -24,6 +25,16 @@ use Illuminate\Support\Collection;
  * data_get
  * data_set
  */
+
+if (!function_exists('validator'))
+{
+    function validator(array $input, array $rules, array $messages = [])
+    {
+        $factory = app()->resolve(\Boot\Foundation\Http\ValidatorFactory::class);
+
+        return $factory->make($input, $rules, $messages);
+    }
+}
 
 if (!function_exists('asset'))
 {
