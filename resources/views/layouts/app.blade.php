@@ -5,7 +5,7 @@
             Slim 4 Authentication
         </title>
 
-        <link rel="stylesheet" href="css/app.css">
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     </head>
     <body>
         <div id="app">
@@ -16,6 +16,6 @@
             </div>
         </div>
 
-        <script src="/js/main.js"></script>
+        <script src="{{ asset('js/main.js') }}"></script>
     </body>
 </html>

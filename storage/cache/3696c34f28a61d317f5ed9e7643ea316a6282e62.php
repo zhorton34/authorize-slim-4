@@ -5,7 +5,7 @@
             Slim 4 Authentication
         </title>
 
-        <link rel="stylesheet" href="css/app.css">
+        <link rel="stylesheet" href="<?php echo e(asset('css/app.css')); ?>">
     </head>
     <body>
         <div id="app">
@@ -16,7 +16,7 @@
             </div>
         </div>
 
-        <script src="/js/main.js"></script>
+        <script src="<?php echo e(asset('js/main.js')); ?>"></script>
     </body>
 </html>
 <?php /**PATH /home/vagrant/code/resources/views/layouts/app.blade.php ENDPATH**/ ?>
