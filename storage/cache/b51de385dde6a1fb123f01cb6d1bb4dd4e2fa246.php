@@ -8,7 +8,7 @@
                 Register
             </h1>
 
-            <?php echo "<input type='hidden' name='csrf_value' value='e695321b6524da39d97f118629f84c6d' /> \n <input type='hidden' name='csrf_name' value='csrf5e98951d65860' />"; ?>
+            <?php echo "<input type='hidden' name='csrf_value' value='092dbf9ea9f3d01435ac8efa2fa037c0' /> \n <input type='hidden' name='csrf_name' value='csrf5e98bfe9f3320' />"; ?>
 
             <input
                 name='first_name'

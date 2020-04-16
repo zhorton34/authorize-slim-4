@@ -8,10 +8,11 @@ class DatabaseServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        $options = data_get(config('database.connections'), config('database.default'));
 
+        $default = config('database.default');
+        $connections = config('database.connections');
         $capsule = new DB;
-        $capsule->addConnection(config('database.connections.mysql'), 'default');
+        $capsule->addConnection(data_get($connections, $default));
         $capsule->setAsGlobal();
         $capsule->bootEloquent();
 

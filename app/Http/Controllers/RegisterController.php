@@ -17,43 +17,31 @@ class RegisterController
 
     public function store(RequestInput $input)
     {
-        $rules = [
-            'first_name' => 'required|string',
-            'last_name' => 'required|string',
-            'email' => 'unique:users,email',
-            'password' => 'min:6|required_with:confirm_password|same:confirm_password',
+        $validator = session()->validator($input->all(), [
+            'email' => 'unique:users,email|email|required',
+            'password' => 'required_with:confirm_password|same:confirm_password|min:5',
             'confirm_password' => 'string|required'
-        ];
-
-        $validator = validator($input->all(), $rules, [
-            'password.min' => ':attribute must be at least :min characters',
-            'password.same' => ':attribute does not match :same field',
+        ], [
+            'password.same' => ':attribute does not match :same',
+            'password.required_with' => ':attribute needs :required_with to properly validate',
+            'email.unique' => ':attribute already exists',
+            'email.email' => ':attribute must be an email',
+            'email.required' => ':attribute is required',
+            'confirm_password.required' => ':attribute is required',
+            'confirm_password.string' => ':attribute must be a string'
         ]);
 
-        if ($validator->fails()) {
-            session()->flash()->set('errors', Arr::collapse(array_values(
-                $validator->errors()->getMessages()
-            )));
+        if ($validator->fails()) return back();
 
-            return back();
-        }
-
-        if ($input->password != $input->confirm_password)
-        {
-            dd("Password and Confirm Password Do Not Match");
-        }
-
+        $input->forget('csrf_value');
+        $input->forget('csrf_name');
         $input->forget('confirm_password');
+
         $input->password = sha1($input->password);
-
-        if (User::where('email', $input->email)->exists()) {
-            dd("User with {$input->email} already exists");
-        }
-
         $user = User::forceCreate($input->all());
 
-        \Auth::attempt($user->email, $user->password);
-
-        return redirect('/home');
+        return \Auth::attempt($user->email, $user->password)
+            ? redirect('/home')
+            : back();
     }
 }

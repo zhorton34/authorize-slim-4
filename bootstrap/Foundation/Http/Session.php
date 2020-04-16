@@ -21,4 +21,18 @@ class Session extends SymfonySession
             return $this->getFlashBag()->add($key, $value);
         }
     }
+
+    public function validator($input, $rules = [], $messages = [])
+    {
+        $validator = validator($input, $rules, $messages);
+
+        if ($validator->fails()) {
+            $this->flash()->set(
+                'errors',
+                collect($validator->errors()->getMessages())->flatten()->all()
+            );
+        }
+
+        return $validator;
+    }
 }

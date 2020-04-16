@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Support\View;
-use App\Support\RequestInput;
 use Illuminate\Support\Arr;
+use App\Support\RequestInput;
 
 class LoginController
 {
@@ -16,34 +16,17 @@ class LoginController
 
     public function store(RequestInput $input)
     {
-        $form = $input->all();
-
-        $form['will_fail'] = null;
-        $rules = [
+        $validator = session()->validator($input->all(), [
             'email' => 'required|email',
-            'will_fail' => 'required',
             'password' => 'required|string'
-        ];
+        ]);
 
-        $validator = validator(
-            $form,
-            $rules,
-        );
+        if ($validator->fails()) return back();
 
-        if ($validator->fails()) {
-            $messages = Arr::collapse(
-                array_values($validator->errors()->getMessages())
-            );
-
-            session()->flash()->set('errors', $messages);
+        if (!Auth::attempt($input->email, sha1($input->password))) {
+            session()->flash()->set('errors', ['Log in failed']);
 
             return back();
-        }
-
-        $successful = Auth::attempt($input->email, sha1($input->password));
-
-        if (!$successful) {
-            dd("Unsuccessful Login Attempt");
         }
 
         return redirect('/home');
