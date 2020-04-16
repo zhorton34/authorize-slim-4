@@ -22,6 +22,7 @@ class HttpKernel extends Kernel
     public array $middlewareGroups = [
         'api' => [],
         'web' => [
+            'csrf',
             Middleware\RouteContextMiddleware::class
         ]
     ];
