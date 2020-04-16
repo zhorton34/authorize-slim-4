@@ -14,6 +14,11 @@ abstract class ServiceProvider
     {
         $this->app = $app;
         $this->container = $this->app->getContainer();
+
+        if (method_exists($this, 'beforeRegistering'))
+        {
+            $this->beforeRegistering();
+        }
     }
 
     abstract public function register();

@@ -5,6 +5,8 @@
                 Logout
             </h1>
 
+            <?php echo "<input type='hidden' name='csrf_value' value='b2cc1b66c1851406bf2b13268e87799a' /> \n <input type='hidden' name='csrf_name' value='csrf5e97caf3cc906' />"; ?>
+
             <input
                 required
                 type="email"
