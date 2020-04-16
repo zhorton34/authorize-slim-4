@@ -1,6 +1,7 @@
 <?php $__env->startSection('content'); ?>
 
-    <?php echo json_encode(session('errors'), 15, 512) ?>
+    <?php echo $__env->make('sections.errors', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+
     <div class="flex justify-center">
         <form class="bg-white shadow-md hover:shadow-xl rounded-lg w-1/2 p-4 mt-10 flex justify-around flex-wrap items-center" method="POST" action="/login">
 
@@ -8,7 +9,7 @@
                 Logout
             </h1>
 
-            <?php echo "<input type='hidden' name='csrf_value' value='dff6306c6d21ddb7aecc6af3d33b87f5' /> \n <input type='hidden' name='csrf_name' value='csrf5e9888efbe818' />"; ?>
+            <?php echo "<input type='hidden' name='csrf_value' value='5e612d0e53e20d313d6c297be8c27bb5' /> \n <input type='hidden' name='csrf_name' value='csrf5e98951b81e7a' />"; ?>
 
             <input
                 name="email"

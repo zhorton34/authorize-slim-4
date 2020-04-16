@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 use App\Support\View;
 use App\Support\RequestInput;
+use Illuminate\Support\Arr;
 
 class LoginController
 {
@@ -30,7 +31,11 @@ class LoginController
         );
 
         if ($validator->fails()) {
-            session('errors', $validator->errors()->getMessages());
+            $messages = Arr::collapse(
+                array_values($validator->errors()->getMessages())
+            );
+
+            session()->flash()->set('errors', $messages);
 
             return back();
         }

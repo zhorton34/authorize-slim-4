@@ -11,7 +11,7 @@ class DatabaseServiceProvider extends ServiceProvider
         $options = data_get(config('database.connections'), config('database.default'));
 
         $capsule = new DB;
-        $capsule->addConnection($options);
+        $capsule->addConnection(config('database.connections.mysql'), 'default');
         $capsule->setAsGlobal();
         $capsule->bootEloquent();
 
