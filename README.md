@@ -10,7 +10,7 @@ Slim 4 Authorization Tutorial
 
 1. Clone, enter, and determine the path the application
 ```
-https://github.com/zhorton34/authorize-slim-4.git
+git clone https://github.com/zhorton34/authorize-slim-4.git
 
 cd authorize-slim-4
 
