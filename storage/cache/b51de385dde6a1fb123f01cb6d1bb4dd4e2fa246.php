@@ -8,21 +8,24 @@
                 Register
             </h1>
 
-            <?php echo "<input type='hidden' name='csrf_value' value='092dbf9ea9f3d01435ac8efa2fa037c0' /> \n <input type='hidden' name='csrf_name' value='csrf5e98bfe9f3320' />"; ?>
+            <?php echo "<input type='hidden' name='csrf_value' value='e0e1d8c39a597067e8785cbea956d53b' /> \n <input type='hidden' name='csrf_name' value='csrf5e98ddec866ec' />"; app()->bind("old_input", session()->flash()->get("old")); ?>
 
             <input
+                value="<?php echo e(old('first_name')); ?>"
                 name='first_name'
                 placeholder='First Name'
                 class="w-full border-2 focus:shadow-md rounded-lg p-4 mt-6"
             />
 
             <input
+                value="<?php echo e(old('last_name')); ?>"
                 name='last_name'
                 placeholder='Last Name'
                 class="w-full border-2 focus:shadow-md rounded-lg p-4 mt-6"
             />
 
             <input
+                value="<?php echo e(old('email')); ?>"
                 name="email"
                 placeholder="Email Address"
                 class="w-full border-2 focus:shadow-md rounded-lg p-4 mt-6"

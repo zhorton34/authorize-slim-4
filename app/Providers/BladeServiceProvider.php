@@ -26,7 +26,7 @@ class BladeServiceProvider extends ServiceProvider
                 $token->getTokenName()
             ]);
 
-            $stub = '<?php echo "{replace} \n {replace}"; ?>';
+            $stub = '<?php echo "{replace} \n {replace}"; app()->bind("old_input", session()->flash()->get("old")); ?>';
 
             $expression = Str::of($stub)->replaceArray('{replace}', [
                 $csrf_value_input,
