@@ -11,7 +11,7 @@ class ViewClearCommand extends Command
 
     public function handler()
     {
-        $files = new Filesystem;
+        $files = app()->resolve(Filesystem::class);
         $path = config('blade.cache');
 
         throw_when(!$path, "Views cache path not found", \RuntimeException::class);
