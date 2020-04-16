@@ -24,7 +24,9 @@
     "vue-template-compiler": "^2.6.10"
   },
   "dependencies": {
+    "material-design-icons": "^3.0.1",
     "tailwindcss": "^1.2.0",
+    "vue-material-design-icons": "^4.6.0",
     "vue-router": "^3.1.3",
     "vuejs-service-container": "^1.1.1",
     "vuex": "^3.1.2"
