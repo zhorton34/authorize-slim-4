@@ -5,6 +5,8 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Illuminate\Support\Collection;
 /*
+ * back
+ * session
  * validator
  * asset
  * redirect
@@ -25,6 +27,38 @@ use Illuminate\Support\Collection;
  * data_get
  * data_set
  */
+
+if (!function_exists('back'))
+{
+    function back()
+    {
+        $route = app()->resolve(\App\Support\RequestInput::class);
+
+        $back = $route->getCurrentUri();
+
+        return redirect($back);
+    }
+}
+
+if (!function_exists('session'))
+{
+    function session($key = false, $value = false)
+    {
+        $session = app()->resolve(\Boot\Foundation\Http\Session::class);
+
+        if (!$key) {
+            return $session;
+        }
+
+        if (!$value) {
+            return $session->get($key);
+        }
+
+        $session->set($key, $value);
+
+        return $session;
+    }
+}
 
 if (!function_exists('validator'))
 {

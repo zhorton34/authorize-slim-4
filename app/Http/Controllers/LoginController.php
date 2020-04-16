@@ -17,8 +17,10 @@ class LoginController
     {
         $form = $input->all();
 
+        $form['will_fail'] = null;
         $rules = [
             'email' => 'required|email',
+            'will_fail' => 'required',
             'password' => 'required|string'
         ];
 
@@ -28,7 +30,9 @@ class LoginController
         );
 
         if ($validator->fails()) {
-            dd($validator->errors());
+            session('errors', $validator->errors()->getMessages());
+
+            return back();
         }
 
         $successful = Auth::attempt($input->email, sha1($input->password));

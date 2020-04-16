@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+
+    @json(session('errors'))
     <div class="flex justify-center">
         <form class="bg-white shadow-md hover:shadow-xl rounded-lg w-1/2 p-4 mt-10 flex justify-around flex-wrap items-center" method="POST" action="/login">
 
@@ -11,16 +13,12 @@
             @csrf
 
             <input
-                required
-                type="email"
                 name="email"
                 placeholder="Email Address"
                 class="w-full border-2 focus:shadow-md rounded-lg p-4 mt-6"
             />
 
             <input
-                required
-                type='password'
                 name='password'
                 placeholder="Password"
                 class="w-full border-2 focus:shadow-md rounded-lg p-4 mt-6"
