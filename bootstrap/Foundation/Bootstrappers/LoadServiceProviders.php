@@ -3,7 +3,6 @@
 namespace Boot\Foundation\Bootstrappers;
 
 use App\Providers\ServiceProvider;
-use Boot\Foundation\Providers\FileSystemServiceProvider;
 
 class LoadServiceProviders extends Bootstrapper
 {

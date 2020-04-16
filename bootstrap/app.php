@@ -5,9 +5,6 @@ use App\Http\HttpKernel;
 use App\Console\ConsoleKernel;
 use Boot\Foundation\AppFactoryBridge as App;
 
-
-
-
 $app = App::create(new Container);
 
 $http_kernel = new HttpKernel($app);

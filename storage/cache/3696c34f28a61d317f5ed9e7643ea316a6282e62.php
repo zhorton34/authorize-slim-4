@@ -9,6 +9,7 @@
     </head>
     <body>
         <div id="app">
+
             <?php echo $__env->make('sections.navigation.top', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
             <div id="content">

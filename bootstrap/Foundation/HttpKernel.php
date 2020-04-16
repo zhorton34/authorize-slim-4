@@ -22,6 +22,7 @@ class HttpKernel extends Kernel
     ];
 
     public array $bootstrappers = [
+        Bootstrappers\LoadSession::class,
         Bootstrappers\LoadEnvironmentDetector::class,
         Bootstrappers\LoadEnvironmentVariables::class,
         Bootstrappers\LoadDebuggingPage::class,

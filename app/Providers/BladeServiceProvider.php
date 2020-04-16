@@ -12,6 +12,15 @@ class BladeServiceProvider extends ServiceProvider
 {
     public function directives(Blade $blade)
     {
+        /**
+         * This expression allows the "old" helper function to work properly
+         * expression also added with the csrf directive since those two expressions
+         * will always be used on forms
+         */
+        $blade->directive('old', fn () => '<?php app()->bind("old_input", session()->flash()->get("old")); ?>');
+
+        $blade->directive('errors', fn () => session()->flash()->has('errors') ? session()->flash()->get('errors') : []);
+
         $blade->directive('csrf', function () {
            $token = $this->app->resolve('csrf');
            $stub = "<input type='hidden' name='{replace}' value='{replace}' />";
@@ -26,7 +35,7 @@ class BladeServiceProvider extends ServiceProvider
               $token->getTokenName()
            ]);
 
-           $stub = '<?php echo "{replace} \n {replace}"; ?>';
+           $stub = '<?php echo "{replace} \n {replace}"; app()->bind("old_input", session()->flash()->get("old")); ?>';
 
            $expression = Str::of($stub)->replaceArray('{replace}', [
                $csrf_value_input,

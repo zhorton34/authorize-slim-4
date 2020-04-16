@@ -9,6 +9,7 @@
     </head>
     <body>
         <div id="app">
+
             @include('sections.navigation.top')
 
             <div id="content">

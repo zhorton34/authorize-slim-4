@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+
+    @include('sections.errors')
+
     <div class="flex justify-center">
         <form class="bg-white shadow-md hover:shadow-xl rounded-lg w-1/2 p-4 mt-10 flex justify-around flex-wrap items-center" method="POST" action="/login">
             <h1 class="text-2xl text-gray-600">
@@ -13,13 +16,15 @@
                 type="email"
                 name="email"
                 placeholder="Email Address"
+                value="{{ old('email') }}"
                 class="w-full border-2 focus:shadow-md rounded-lg p-4 mt-6"
             />
 
             <input
-                type='password'
+                type="password"
                 name='password'
                 placeholder="Password"
+                value="{{ old('password') }}"
                 class="w-full border-2 focus:shadow-md rounded-lg p-4 mt-6"
             />
 

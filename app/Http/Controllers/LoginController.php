@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 use App\Support\View;
 use App\Support\RequestInput;
+use Illuminate\Support\Arr;
 
 class LoginController
 {
@@ -20,21 +21,29 @@ class LoginController
             'password' => 'required',
             'field' => 'required'
         ], [
-            'email.email' => 'Whoops Email must be an email',
-            'password.required' => 'Password is required',
-            'field.required' => 'Field is required'
+            'email.required' => ':attribute Whoops field should be an email address',
+            'password.required' => ':attribute Whoops field is required'
         ]);
 
         if ($validator->fails()) {
-            $_SESSION['errors'] = json_encode(json_decode($validator->errors()));
+            $messages = Arr::collapse(
+                array_values(
+                    $validator->errors()->getMessages()
+                )
+            );
+            session()->flash()->set('errors', $messages);
+            session()->flash()->set('old', $input->all());
 
-            return redirect($input->getCurrentUri());
+            return back();
         }
 
         $successful = Auth::attempt($input->email, sha1($input->password));
 
         if (!$successful) {
-            dd("Unsuccessful Login Attempt");
+            session()->flash('errors', "Unsuccessful Login attempt");
+            session()->flash()->set('old', $input->all());
+
+            return back();
         }
 
         return redirect('/home');
