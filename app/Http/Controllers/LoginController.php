@@ -17,27 +17,22 @@ class LoginController
     {
         $form = $input->all();
 
+        $form['will_fail'] = null;
         $rules = [
             'email' => 'required|email',
-            'will_fail' => 'required|email',
+            'will_fail' => 'required',
             'password' => 'required|string'
         ];
-
-        /** Override Validation Rule Messages Defined in languages/en/validation.php
-         * $messages = [
-         *    'will_fail.required' => ':attribute Whoops ~ its required',
-         *    'will_fail.email' => ':attribute whoops ~ must be an email'
-         * ];
-        **/
 
         $validator = validator(
             $form,
             $rules,
-            // $messages
         );
 
         if ($validator->fails()) {
-            dd($validator->errors());
+            session('errors', $validator->errors()->getMessages());
+
+            return back();
         }
 
         $successful = Auth::attempt($input->email, sha1($input->password));
