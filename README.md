@@ -1,6 +1,25 @@
 # authorize-slim-4
 Slim 4 Authorization Tutorial
 
+## Documentation
+ - [Installation](https://github.com/zhorton34/authorize-slim-4#installation)
+ - [Console Commands](https://github.com/zhorton34/authorize-slim-4#list-slim-console-commands)
+ - [Migrate & Seed Database](https://github.com/zhorton34/authorize-slim-4#migrate-and-seed-database)
+ - [Register Middleware](https://github.com/zhorton34/authorize-slim-4#register-middleware)
+ - [Register Console Commands](https://github.com/zhorton34/authorize-slim-4#create-and-register-new-php-slim-command)
+ - [php slim make:{scaffold} generators](https://github.com/zhorton34/authorize-slim-4#php-slim-makecommand-scaffold-stub-generators)
+   - `php slim make:command (Scaffold New Console Command)`
+   - `php slim make:controller (Scaffold new Controller)`
+   - `php slim make:factory (Scaffold new Factory)`
+   - `php slim make:middleware (Scaffold new Middleware)`
+   - `php slim make:migration (Scaffold new migration)`
+   - `php slim make:model (Scaffold new Eloquent Model)`
+   - `php slim make:provider(Scaffold new Service Provider)`
+   - `php slim make:request (Scaffold new FormRequest Validator)`
+   - `php slim make:seeder (Scaffold new database seeder)`
+- [Global Helper Functions](https://github.com/zhorton34/authorize-slim-4#global-helper-functions)
+- [Validators](https://github.com/zhorton34/authorize-slim-4#validatorinput-rules---messages--)
+- [Mailables](
 # Installation
 
 ### Dependencies
@@ -374,5 +393,30 @@ if ($validation->passes() {
    session()->flash()->set('success', 'Successfully Submitted Form and Passed Validation');
 
    return redirect('/home');
+}
+```
+
+
+## Mailables (Send Emails)
+
+1. @see `\Boot\Foundation\Mail\Mailable`
+**Example**
+```
+class ExampleController
+{
+   public function send(\Boot\Foundation\Mail\Mailable $mail, $response)
+   {
+       $user = \App\User::first();
+       
+       $success = $mail->view('mail.auth.reset', ['url' => 'https://google.com'])
+            ->to($user->email, $user->first_name)
+            ->from('admin@slim.auth', 'Slim Authentication Admin')
+            ->subject('Reset Password')
+            ->send();
+
+       $response->getBody()->write("Successfully sent Email: {$success}");
+
+       return $response;
+   }
 }
 ```
