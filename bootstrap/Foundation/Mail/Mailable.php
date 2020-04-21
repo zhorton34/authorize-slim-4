@@ -51,13 +51,13 @@ class Mailable
     {
         $template = $this->view->make($path, $with)->render();
 
-        $this->email->addPart($template, 'text/html');
+        $this->email->setBody($template, 'text/html');
 
         return $this;
     }
 
     public function send()
     {
-        $this->mailer->send($this->email);
+        return $this->mailer->send($this->email);
     }
 }

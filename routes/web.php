@@ -2,16 +2,26 @@
 
 use App\Support\View;
 use App\Support\Route;
+use Boot\Foundation\Mail\Mailable;
 use App\Http\Middleware\RedirectIfGuestMiddleware as RedirectIfGuest;
 use App\Http\Middleware\RedirectIfAuthenticatedMiddleware as RedirectIfAuthenticated;
 
-Route::get('/test', function (\Boot\Foundation\Mail\Mailable $mail, $response) {
-    $successful = $mail->send();
+Route::get('/test', function (Mailable $mail, $response) {
+    $user = \App\User::first();
+
+    $url =  config('app.url') . '/reset-password/unique-key';
+
+    $successful = $mail->subject('Reset Password Link')
+                        ->from('admin@slim.auth', 'Slim Authentication')
+                        ->to($user->email, $user->name)
+                        ->view('mail.auth.reset', compact('url'))
+                        ->send();
 
     $response->getBody()->write("Successfully sent email: {$successful}");
 
     return $response;
 });
+
 Route::get('/', fn (View $view) => $view('welcome'));
 
 /* 1 Have user confirm they want to reset their password */
