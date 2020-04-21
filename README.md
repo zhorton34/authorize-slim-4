@@ -269,3 +269,110 @@ class ConsoleKernel extends Kernel
   
 3. Scaffold Configuration
    - `config/stubs.php`
+
+## Global Helper Functions
+/*
+ * old
+ * back
+ * session
+ * validator
+ * asset
+ * redirect
+ * collect
+ * factory
+ * env
+ * base_path
+ * config_path
+ * resources_path
+ * public_path
+ * routes_path
+ * storage_path
+ * app_path
+ * dd (die and dump)
+ * throw_when
+ * class_basename
+ * config
+ * data_get
+ * data_set
+ */
+ 
+ #### old($input_name)
+ - Used within blade to populate old input data when form validation fails
+
+**Example** 
+```
+<form>
+  @csrf
+  <input type='text' name='first_name' value='{{ old('first_name') }}' />
+</form>
+```
+
+
+#### back()
+- Redirect user back to previous page
+
+**Example**
+```
+ExampleController 
+{
+   index()
+   {
+      return back();
+   }
+}
+```
+
+#### session()
+- Session (Using Syfony Session Component)
+
+**Example**
+```
+// Flash to session to only remember for the proceeding request
+session()->flash()->set('success', ['Successful Form Submission!']);
+session()->flash()->set('errors', ['Name field failed', 'Email field failed']);
+
+// Set directly to session to remember for several requests
+session()->set('remember_in_session_for_multiple_requests', ['remember me']);
+```
+
+#### validator($input, $rules = [], $messages = [])
+- Validator (Using Laravel Validators)
+
+**Example**
+```
+$input = [
+   'first_name' => 'John',
+   'last_name' => 'Joe',
+   'email' => 'john.joe@example.com'
+];
+
+$rules = [
+   'first_name' => 'required|string',
+   'last_name' => 'required|string|max:50',
+   'email' => 'required|email|max:50|unique:users,email'
+];
+
+$messages = [
+    'first_name.required' => 'First name is a required field',
+    'first_name.string' => 'First name must be a string field',
+    'last_name.required' => 'Last name must is a required field',
+    'last_name.string' => 'Last name must be a string field',
+    'email.email' => 'Email must be in the proper email format',
+    'email.unique' => 'Email already taken, no duplicate emails allowed',
+    'email.required' => 'Email is required',
+];
+
+$validation = validator($input, $rules, $messages);
+
+if ($validation->fails()) {
+   session()->flash()->set('errors', $validation->errors()->getMessages());
+   
+   return back();
+}
+
+if ($validation->passes() {
+   session()->flash()->set('success', 'Successfully Submitted Form and Passed Validation');
+
+   return redirect('/home');
+}
+```
