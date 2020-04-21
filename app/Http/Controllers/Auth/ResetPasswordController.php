@@ -6,8 +6,10 @@ use App\User;
 use Carbon\Carbon;
 use App\Support\View;
 use App\ResetPassword;
-use App\Support\RequestInput;
 use Boot\Foundation\Mail\Mailable;
+use App\Http\Requests\ShowResetPasswordRequest;
+use App\Http\Requests\StoreResetPasswordRequest;
+use App\Http\Requests\UpdateResetPasswordRequest;
 
 class ResetPasswordController
 {
@@ -21,77 +23,53 @@ class ResetPasswordController
         return $view('auth.sent-reset-password-link-successfully');
     }
 
-    public function store(Mailable $mail, View $view, RequestInput $input)
+    public function store(StoreResetPasswordRequest $input, Mailable $mail)
     {
-        $rules = ['email' => 'required|email|exists:users,email'];
-        $invalid = session()->validator($input->all(), $rules)->fails();
+        if ($input->failed()) return back();
 
-        if ($invalid) return back();
-
-        /**
-         * Persist Encrypted Reset Password Data
-         */
+        $now = Carbon::now();
+        $url = config('app.url');
         $user = User::where('email', $input->email)->first();
-        $reset_key = sha1($user->email . $user->password . Carbon::now());
-        ResetPassword::create(['user_id' => $user->id, 'key' => $reset_key]);
 
-        /**
-         * Send Reset Password Link To User Via Email
-         */
-        $reset_url = config('app.url') . "/reset-password/{$reset_key}";
+        $user_id = $user->id;
+        $key = sha1($user->email . $user->password . $now);
+        $reset_password_attributes = compact('user_id', 'key');
 
-        $mail->view('mail.auth.reset', compact('reset_url'))
-            ->to($user->email, "{$user->first_name} {$user->last_name}")
+        ResetPassword::create($reset_password_attributes);
+
+        $mail->to($user->email, $user->first_name)
             ->from('admin@slim.auth', 'Admin')
-            ->subject('Link To Reset Your Password')
-            ->send();
+            ->view('mail.auth.reset', ['url' => "{$url}/reset-password/{$key}"]);
 
-        /**
-         * Inform The User That The Reset Password Link Has Successfully Been Sent
-         */
+        $mail->subject('Reset Your Password Link')->send();
+
         return redirect('/reset-password/confirm');
     }
 
-    public function show(View $view, RequestInput $input, $key)
+    public function show(View $view, ShowResetPasswordRequest $input, $key)
     {
-        $validation = session()->validator($input->all(), [
-            'key' => 'exists:reset_passwords,key'
-        ]);
-
-        if ($validation->fails()) return redirect('/login');
+        if ($input->failed()) return back();
 
         return $view('auth.reset-password', compact('key'));
     }
 
-    public function update(RequestInput $input, $key)
+    public function update(UpdateResetPasswordRequest $input, $key)
     {
-        $rules = [
-            'password' => 'required_with:confirm_password|same:confirm_password|min:5',
-            'confirm_password' => 'string|required'
-        ];
+        if ($input->failed()) return back();
 
-        $messages = [
-            'password.same' => ':attribute does not match :same',
-            'password.required_with' => ':attribute needs :required_with to properly validate',
-            'confirm_password.required' => ':attribute is required',
-            'confirm_password.string' => ':attribute must be a string'
-        ];
-
-        $validator = session()->validator($input->all(), $rules, $messages);
-
-        if ($validator->fails()) return back();
-
-        $reset_password = ResetPassword::where('key', $key)->first();
-        $user = $reset_password->user;
+        $reset = ResetPassword::where('key', $key)->first();
+        $user = $reset->user;
 
         $user->password = sha1($input('password'));
         $successful = $user->save();
 
         if ($successful) {
-            $reset_password->delete();
+            $reset->where('key', $key)->each(fn ($resetting) => $resetting->delete());
 
             return redirect('/login');
         }
+
+        session()->flash()->set('errors', ['Was not able to successfully reset user password']);
 
         return back();
     }

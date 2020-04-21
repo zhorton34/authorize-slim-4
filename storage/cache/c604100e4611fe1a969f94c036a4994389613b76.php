@@ -4,7 +4,7 @@
 
     <div class="flex flex-wrap justify-center">
         <form class="bg-white shadow-md hover:shadow-xl rounded-lg w-1/2 p-4 mt-10 flex justify-around flex-wrap items-center" method="POST" action="/login">
-            <?php echo "<input type='hidden' name='csrf_value' value='1985b531511df55b7c416961cc3ba308' /> \n <input type='hidden' name='csrf_name' value='csrf5e9ead7c222d2' />"; app()->bind("old_input", session()->flash()->get("old")); ?>
+            <?php echo "<input type='hidden' name='csrf_value' value='c062d6ab4ecb652cf913a9dc0f413c02' /> \n <input type='hidden' name='csrf_name' value='csrf5e9ec6f542daf' />"; app()->bind("old_input", session()->flash()->get("old")); ?>
 
             <input
                 name="email"

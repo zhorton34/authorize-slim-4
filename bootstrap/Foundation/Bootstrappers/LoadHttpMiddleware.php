@@ -2,6 +2,7 @@
 
 namespace Boot\Foundation\Bootstrappers;
 
+use App\Support\RequestInput;
 use Boot\Foundation\Kernel;
 
 class LoadHttpMiddleware extends Bootstrapper

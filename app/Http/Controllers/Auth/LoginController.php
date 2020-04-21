@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use Auth;
 use App\Support\View;
-use App\Support\RequestInput;
+use App\Http\Requests\LoginUserRequest;
 
 class LoginController
 {
@@ -13,16 +13,13 @@ class LoginController
         return $view('auth.login');
     }
 
-    public function store(RequestInput $input)
+    public function store(LoginUserRequest $input)
     {
-        $validator = session()->validator($input->all(), [
-            'email' => 'required|email',
-            'password' => 'required|string'
-        ]);
+        if ($input->failed()) return back();
 
-        if ($validator->fails()) return back();
+        $fails = !Auth::attempt($input->email, sha1($input->password));
 
-        if (!Auth::attempt($input->email, sha1($input->password))) {
+        if ($fails) {
             session()->flash()->set('errors', ['Log in failed']);
 
             return back();

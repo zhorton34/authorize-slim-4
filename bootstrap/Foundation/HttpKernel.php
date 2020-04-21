@@ -6,6 +6,11 @@ namespace Boot\Foundation;
 
 class HttpKernel extends Kernel
 {
+    /*
+     * Dependency Injectable Form Request
+     */
+    public array $requests = [];
+
     /**
      * Global Middleware
      *
