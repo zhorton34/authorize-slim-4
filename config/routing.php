@@ -2,6 +2,9 @@
 
 return [
     'controllers' => [
-        'namespace' => '\\App\\Http\\Controllers\\'
+        'namespaces' => [
+            '\\App\\Http\\Controllers\\',
+            '\\App\\Http\\Controllers\\Auth\\'
+        ]
     ]
 ];

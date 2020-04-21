@@ -7,6 +7,15 @@ use Boot\Foundation\HttpKernel as Kernel;
 class HttpKernel extends Kernel
 {
     /**
+     * Injectable Request Input Form Request Validators
+     * @var array
+     */
+    public array $requests = [
+        Requests\StoreLoginRequest::class,
+        Requests\StoreRegisterRequest::class,
+    ];
+
+    /**
      * Global Middleware
      *
      * @var array

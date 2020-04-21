@@ -8,7 +8,7 @@
                 Logout
             </h1>
 
-            <?php echo "<input type='hidden' name='csrf_value' value='309f9c7ff3413e04a310a48aa4024bc4' /> \n <input type='hidden' name='csrf_name' value='csrf5e98b9ffaf3a0' />"; ?>
+            <?php echo "<input type='hidden' name='csrf_value' value='aedd8d450647c65ed75801399a77ec8b' /> \n <input type='hidden' name='csrf_name' value='csrf5e9ed3706207c' />"; ?>
 
             <input
                 name="email"
