@@ -19,7 +19,8 @@ Slim 4 Authorization Tutorial
    - `php slim make:seeder (Scaffold new database seeder)`
 - [Global Helper Functions](https://github.com/zhorton34/authorize-slim-4#global-helper-functions)
 - [Validators](https://github.com/zhorton34/authorize-slim-4#validatorinput-rules---messages--)
-- [Mailables](
+- [Mailables](https://github.com/zhorton34/authorize-slim-4/blob/master/README.md#mailables-send-emails)
+
 # Installation
 
 ### Dependencies
