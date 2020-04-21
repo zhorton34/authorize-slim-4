@@ -35,7 +35,6 @@ class BladeServiceProvider extends ServiceProvider
 
             return $expression;
         });
-        // Add custom blade directives
     }
 
     public function register()

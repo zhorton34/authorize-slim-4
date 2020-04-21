@@ -47,6 +47,7 @@ return [
         \Boot\Foundation\Providers\ValidatorServiceProvider::class,
 
         /* App Service Providers... */
+        \App\Providers\MailServiceProvider::class,
         \App\Providers\DatabaseServiceProvider::class,
         \App\Providers\BladeServiceProvider::class
     ],

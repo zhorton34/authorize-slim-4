@@ -4,12 +4,8 @@
 
     @include('sections.errors')
 
-    <div class="flex justify-center">
+    <div class="flex flex-wrap justify-center">
         <form class="bg-white shadow-md hover:shadow-xl rounded-lg w-1/2 p-4 mt-10 flex justify-around flex-wrap items-center" method="POST" action="/register">
-            <h1 class="text-2xl text-gray-600">
-                Register
-            </h1>
-
             @csrf
 
             <input
@@ -48,6 +44,12 @@
             <button type="submit" class="bg-blue-500 w-1/2 text-white focus:shadow-md border-2 rounded-lg p-4 mt-6">
                 Register
             </button>
+
+            <div class="flex justify-end mt-4 text-gray-500 w-full">
+                <a href="/login">
+                    Already Registered? Login
+                </a>
+            </div>
         </form>
     </div>
 @endsection

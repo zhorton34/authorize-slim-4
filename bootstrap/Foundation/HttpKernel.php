@@ -30,6 +30,7 @@ class HttpKernel extends Kernel
         Bootstrappers\LoadCsrf::class,
         Bootstrappers\LoadHttpMiddleware::class,
         Bootstrappers\LoadBladeTemplates::class,
+        Bootstrappers\LoadMailable::class,
         Bootstrappers\LoadServiceProviders::class,
     ];
 }
