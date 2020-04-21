@@ -12,6 +12,7 @@ class ConsoleKernel extends Kernel
         Commands\DatabaseRunSeeders::class,
         Commands\DatabaseFreshCommand::class,
         Commands\MakeMigrationCommand::class,
+        Commands\ErrorLogsClearCommand::class,
         Commands\DatabaseMigrateCommand::class,
         Commands\DatabaseTableDisplayCommand::class,
         Commands\DatabaseRollbackMigrationCommand::class
