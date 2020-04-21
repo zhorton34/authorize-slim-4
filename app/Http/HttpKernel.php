@@ -20,10 +20,7 @@ class HttpKernel extends Kernel
      *
      * @var array
      */
-    public array $middleware = [
-//        Middleware\ExampleAfterMiddleware::class,
-//        Middleware\ExampleBeforeMiddleware::class
-    ];
+    public array $middleware = [];
 
     /**
      * Route Group Middleware

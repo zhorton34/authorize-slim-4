@@ -1,0 +1,26 @@
+<?php
+
+namespace {DummyNamespace};
+
+/**
+ * Register Service Provider To Application within config/app.php
+ */
+class {DummyClass} extends ServiceProvider
+{
+    /**
+     * Register ServiceProvider Hooks Run First
+     */
+    public function register()
+    {
+        //
+    }
+
+    /**
+     * After all register ServiceProviders Hooks complete, then
+     * all boot ServiceProvider Hooks are executed
+     */
+    public function boot()
+    {
+        //
+    }
+}
