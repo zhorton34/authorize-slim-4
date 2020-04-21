@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Auth;
 
 use Auth;
 use App\Support\View;
-use Illuminate\Support\Arr;
 use App\Support\RequestInput;
 
 class LoginController
