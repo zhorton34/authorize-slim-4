@@ -4,32 +4,44 @@
 namespace App\Http\Controllers\Auth;
 
 
+use App\Http\Requests\StoreResetPasswordRequest;
+use App\Http\Requests\UpdateResetPasswordRequest;
+use App\ResetPassword;
 use App\Support\RequestInput;
 use App\Support\View;
+use App\User;
+use Boot\Foundation\Mail\Mailable;
+use Carbon\Carbon;
 
 class ResetPasswordController
 {
     public function send(View $view)
     {
-        $view('auth.send-reset-password-link');
+        return $view('auth.send-reset-password-link');
     }
 
-    public function store(
-        // StoreResetPasswordRequest $input,
-        // Mailable $mail
-    )
+    public function store(StoreResetPasswordRequest $input, Mailable $mail)
     {
-        // 1. If input validation fails, redirect user back to password reset form
+        if ($input->failed()) return back();
 
-        // 2. Create a unique reset password key
+        $now = Carbon::now();
+        $url = config('app.url');
+        $user = User::where('email', $input->email)->first();
 
-        // 3. Persist or store that unique password key to the database
-        //    with a relationship to our user
+        $user_id = $user->id;
+        $key = sha1($user->email . $user->password . $now);
 
-        // 4. Email user the reset password link
+        ResetPassword::create(compact('key', 'user_id'));
 
-        // 5. Return Redirect the user to the reset password email sent successfully
-        //    (tell the user to check their email address)
+        $mail->to($user->email, $user->first_name)
+             ->from('admin@slim.auth', 'Slim Authentication')
+             ->view('mail.auth.reset', [
+                 'url' => "{$url}/reset-password/{$key}"
+             ]);
+
+        $mail->subject('Reset Your Password')->send();
+
+        return redirect('/reset-password/confirm');
     }
 
     public function confirm(View $view)
@@ -45,24 +57,27 @@ class ResetPasswordController
         return $view('auth.reset-password', compact('key'));
     }
 
-    public function update(
-        // UpdateResetPasswordRequest $input,
-        // $key
-    ) {
-        // 1. if validation failed, redirect user back to reset password form
+    public function update(UpdateResetPasswordRequest $input, $key)
+    {
+        if ($input->failed()) return back();
 
-        // 2. Find the persisted reset key within the database
+        $reset = ResetPassword::where('key', $key)->first();
 
-        // 3. Get the user related to that key within the database
+        $user = $reset->user;
 
-        // 4. update the user with the new password given all validations pass
+        $user->password = sha1($input->password);
+        $successful = $user->save();
 
-        // 5. if successfully updated the user password
-        //       A. delete the reset_password key
-        //       B. Redirect the user back to 'login'
+        if ($successful) {
+            ResetPassword::where('key', $key)->each(fn ($reset) => $reset->delete());
 
-        // 6. If we did not successfully update the user password
-        //      A. Flash errors to the session
-        //      B. Return user back to the reset password form
+            return redirect('/login');
+        }
+
+        session()->flash()->set('errors', [
+            'Was not able to successfully reset user password for unknown reasons'
+        ]);
+
+        return back();
     }
 }
