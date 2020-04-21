@@ -1,0 +1,32 @@
+<?php
+
+namespace {DummyNamespace};
+
+use Slim\Psr7\Response;
+use Psr\Http\Server\RequestHandlerInterface as Handle;
+use Psr\Http\Message\ServerRequestInterface as Request;
+
+/**
+ * Middleware Must Also Be Registered To HttpKernel or Registered on specific routes
+ **/
+class {DummyClass}
+{
+    public function __invoke(Request $request, Handle $handler)
+    {
+        /* Execute Middleware Before Request Is Handled
+         * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+         * $response = $handler->handle($request);
+         * $existing_body = (string) $response->getBody();
+         * $response = new Response;
+         * $response->getBody()->write("Before: {$existing_body}");
+         * return $response;
+        */
+
+        /* Execute Middleware After Request Is Handled
+         * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+         *   $response = $handler->handle($request);
+         *   $response->getBody()->write("\n After Middleware");
+         *   return $response;
+        */
+    }
+}

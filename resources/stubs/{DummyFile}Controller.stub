@@ -1,0 +1,36 @@
+<?php
+
+use App\Support\View;
+use App\Support\RequestInput;
+
+class {DummyFile}Controller
+{
+    public function index(View $view)
+    {
+        return $view('{DummyFile|snake}.index');
+    }
+
+    public function show(View $view)
+    {
+        return $view('{DummyFile|snake}.show');
+    }
+
+    public function create(View $view)
+    {
+        return $view('{DummyFile|snake}.create');
+    }
+
+    public function update(RequestInput $input)
+    {
+        // $model = Model::find($input->id);
+        // $model->update($input->all();
+        // return redirect('/index');
+    }
+
+    public function destroy($id)
+    {
+        // $model = Model::find($id);
+        //
+        // $model->delete();
+    }
+}

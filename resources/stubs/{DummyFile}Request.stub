@@ -1,0 +1,52 @@
+<?php
+
+namespace {DummyNamespace};
+
+class {DummyClass} extends FormRequest
+{
+    /**
+     * Prepare Request Input For Validation
+     * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     * $this->all();
+     * $this->forget('existing_field');
+     * $this->new_field = 'Example Value';
+     * $this->existing_field = sha1($this->existing_field);
+     */
+    protected function prepareForValidation()
+    {
+        //
+    }
+
+    /**
+     * Add Request Validation Rules
+     * See: https://laravel.com/docs/7.x/validation#available-validation-rules
+     */
+    public function rules()
+    {
+        return [];
+    }
+
+    /**
+     * Add Custom Request Validation Messages When Validation Fails
+     * See: base_path('languages/en/validation.php') file
+     */
+    public function messages()
+    {
+        return [];
+    }
+
+    protected function afterValidationPasses()
+    {
+        //
+    }
+
+    protected function afterValidationFails()
+    {
+        //
+    }
+
+    protected function afterValidation()
+    {
+        //
+    }
+}

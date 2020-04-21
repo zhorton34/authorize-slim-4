@@ -1,0 +1,26 @@
+<?php
+
+namespace {DummyNamespace};
+
+class {DummyClass} extends Command
+{
+    /**
+     * Define console command name
+     * php slim make:command
+     */
+    protected $name = 'make:command';
+    protected $help = 'help text for console command';
+    protected $description = 'description text for console command';
+
+    protected function arguments()
+    {
+        return [
+            'name' => $this->require('{DummyClass} name command description'),
+        ];
+    }
+
+    public function handler()
+    {
+          //
+    }
+}

@@ -3,8 +3,8 @@
 namespace App\Http\Middleware;
 
 use Auth;
-use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Server\RequestHandlerInterface as Handle;
+use Psr\Http\Message\ServerRequestInterface as Request;
 
 class RedirectIfAuthenticatedMiddleware
 {
