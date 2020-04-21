@@ -8,47 +8,40 @@ class Auth
 {
     public static function attempt($email, $password)
     {
-        $user = User::where('email', $email);
+        $validator = session()->validator(compact('email', 'password'), [
+            'email' => 'required|exists:users,email',
+            'password' => 'required|exists:users,password'
+        ], [
+            'email.exists' => 'Email not found',
+            'password.exists' => 'Password not found'
+        ]);
 
-        if (!$user->exists()) {
-            return false;
-        }
+        if ($validator->fails()) return false;
 
-        $user = $user->first();
+        $user = User::where('email', $email)->first()->first();
 
-        if ($password !== $user->password) {
-            dd("Not the proper password, cant log you in");
+        $id = $user->id;
+        $email = $user->email;
+        $password = $user->password;
 
-            return false;
-        }
-
-        $_SESSION['user'] = [
-            'id' => $user->id,
-            'email' => $user->email,
-            'password' => $user->password,
-        ];
+        session()->set('user', compact('id', 'email', 'password'));
 
         return true;
     }
 
     public static function logout()
     {
-        $_SESSION['user'] = [
-            'id' => null,
-            'email' => null,
-            'password' => null
-        ];
+        $id = null;
+        $email = null;
+        $password = null;
+        session()->set('user', compact('id', 'email', 'password'));
     }
 
     public static function user()
     {
-        $user_in_session = isset($_SESSION['user']);
+        if (!session()->has('user')) return false;
 
-        if (!$user_in_session) {
-            return false;
-        }
-
-        $query = User::where($_SESSION['user']);
+        $query = User::where(session()->get('user'));
 
         return $query->exists() ? $query->first() : false;
     }

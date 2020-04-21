@@ -10,6 +10,7 @@
 
             <?php echo "<input type='hidden' name='csrf_value' value='e0e1d8c39a597067e8785cbea956d53b' /> \n <input type='hidden' name='csrf_name' value='csrf5e98ddec866ec' />"; app()->bind("old_input", session()->flash()->get("old")); ?>
 
+
             <input
                 value="<?php echo e(old('first_name')); ?>"
                 name='first_name'
