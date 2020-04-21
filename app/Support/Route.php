@@ -32,8 +32,15 @@ class Route
     {
         $class = Str::before($action, '@');
         $method = Str::after($action, '@');
+        $namespaces = config('routing.controllers.namespaces');
 
-        $controller = config('routing.controllers.namespace') . $class;
+        foreach ($namespaces as $namespace) {
+            if (class_exists($namespace . $class)) {
+                $controller = $namespace . $class;
+            }
+        }
+
+        throw_when(!isset($controller), "Was Not Able To Resolve Controller from {$action}");
 
         return [$controller, $method];
     }
