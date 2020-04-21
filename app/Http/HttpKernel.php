@@ -13,6 +13,8 @@ class HttpKernel extends Kernel
     public array $requests = [
         Requests\StoreLoginRequest::class,
         Requests\StoreRegisterRequest::class,
+        Requests\StoreResetPasswordRequest::class,
+        Requests\UpdateResetPasswordRequest::class,
     ];
 
     /**

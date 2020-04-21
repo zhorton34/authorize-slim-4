@@ -3,7 +3,7 @@
     <?php echo $__env->make('sections.errors', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <div class="flex justify-center">
         <form class="bg-white shadow-md hover:shadow-xl rounded-lg w-1/2 p-4 mt-10 flex justify-around flex-wrap items-center" method="POST" action="/reset-password/<?php echo e($key); ?>">
-            <?php echo "<input type='hidden' name='csrf_value' value='07ad739ed577722622632f59b45b2b7a' /> \n <input type='hidden' name='csrf_name' value='csrf5e9f59d2c9471' />"; app()->bind("old_input", session()->flash()->get("old")); ?>
+            <?php echo "<input type='hidden' name='csrf_value' value='bd1c87dbb3548d357c9c02ddfed0cbab' /> \n <input type='hidden' name='csrf_name' value='csrf5e9f6fbe8edcd' />"; app()->bind("old_input", session()->flash()->get("old")); ?>
 
             <input
                 type="password"
