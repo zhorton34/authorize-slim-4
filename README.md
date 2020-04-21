@@ -248,3 +248,24 @@ class ConsoleKernel extends Kernel
 }
 
 ```
+
+## `php slim make:{command}` Scaffold Stub Generators
+
+1. Available Generator Commands
+```
+  php slim make:command {ExampleConsoleCommand}      Generate Command Scaffold
+  php slim make:controller {Example} description text for console command
+  php slim make:factory {ExampleFactory}      Scaffold new factory command
+  php slim make:middleware {ExampleMiddleware} Generate or make Scaffold for new http middleware class
+  php slim make:migration {CreateExamplesTable   Make or scaffolded new migration for our database
+  php slim make:model {Example}        Generate The Scaffold For An Eloquent Model
+  php slim make:provider {ExampleServiceProvider}     Scaffold new Service Provider
+  php slim make:request {ExampleFormRequest}     Generate Form Request Validation Scaffold
+  php slim make:seeder {ExamplesTableSeeder}       Generate a database seeder scaffold
+```
+
+2. Scaffold Generator Stubs (Dummy Files)
+   - `resources/stubs`
+  
+3. Scaffold Configuration
+   - `config/stubs.php`
