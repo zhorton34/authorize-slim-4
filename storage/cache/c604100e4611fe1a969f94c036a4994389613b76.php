@@ -8,10 +8,12 @@
                 Logout
             </h1>
 
-            <?php echo "<input type='hidden' name='csrf_value' value='aedd8d450647c65ed75801399a77ec8b' /> \n <input type='hidden' name='csrf_name' value='csrf5e9ed3706207c' />"; ?>
+            <?php echo "<input type='hidden' name='csrf_value' value='2da9d5a17825e1b7dda9c74b3f2ea1e1' /> \n <input type='hidden' name='csrf_name' value='csrf5e98dde9be9f9' />"; app()->bind("old_input", session()->flash()->get("old")); ?>
+
 
             <input
                 name="email"
+                value="<?php echo e(old('email')); ?>"
                 placeholder="Email Address"
                 class="w-full border-2 focus:shadow-md rounded-lg p-4 mt-6"
             />

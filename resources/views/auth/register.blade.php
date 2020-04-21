@@ -13,18 +13,21 @@
             @csrf
 
             <input
+                value="{{ old('first_name') }}"
                 name='first_name'
                 placeholder='First Name'
                 class="w-full border-2 focus:shadow-md rounded-lg p-4 mt-6"
             />
 
             <input
+                value="{{ old('last_name') }}"
                 name='last_name'
                 placeholder='Last Name'
                 class="w-full border-2 focus:shadow-md rounded-lg p-4 mt-6"
             />
 
             <input
+                value="{{ old('email') }}"
                 name="email"
                 placeholder="Email Address"
                 class="w-full border-2 focus:shadow-md rounded-lg p-4 mt-6"
