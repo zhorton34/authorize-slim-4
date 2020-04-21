@@ -127,13 +127,7 @@ cd code && cp .env.example .env && composer install && npm install
 1. Run `php slim` from project root
 
 ```
-Console
-----------------------------------------
- ~/tutorials/authorize-slim-4 php slim
------------------------------------------
-
-
-Console Tool
+sole Tool
 
 Usage:
   command [options] [arguments]
@@ -150,14 +144,23 @@ Options:
 Available commands:
   help              Displays help for a command
   list              Lists commands
-  tinker
+  tinker            
  db
   db:fresh          Drop all database table and re-migrate, then re-seed all tables
   db:migrate        Migration migrations to database
   db:seed           Run Database Seeders
   db:show           Show all of your models/table records in a table for display
+ error-logs
+  error-logs:clear  Remove Errors Logs Rendered Templates
  make
+  make:command      Generate Command Scaffold
+  make:controller   description text for console command
+  make:factory      Scaffold new factory command
+  make:middleware   Generate or make Scaffold for new http middleware class
   make:migration    Make or scaffolded new migration for our database
+  make:model        Generate The Scaffold For An Eloquent Model
+  make:provider     Scaffold new Service Provider
+  make:request      Generate Form Request Validation Scaffold
   make:seeder       Generate a database seeder scaffold
  migrate
   migrate:rollback  Rollback Previous Database Migration
