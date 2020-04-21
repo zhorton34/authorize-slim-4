@@ -18,7 +18,8 @@
         "slim/csrf": "^1.0",
         "illuminate/validation": "^7.6",
         "swiftmailer/swiftmailer": "^6.0",
-        "guzzlehttp/guzzle": "^6.5"
+        "guzzlehttp/guzzle": "^6.5",
+        "illuminate/mail": "^7.7"
     },
     "autoload": {
         "files": [
