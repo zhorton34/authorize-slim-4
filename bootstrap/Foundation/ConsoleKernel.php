@@ -12,6 +12,7 @@ class ConsoleKernel extends Kernel
         Bootstrappers\LoadAliases::class,
         Bootstrappers\LoadConsoleEnvironment::class,
         Bootstrappers\LoadBladeTemplates::class,
+        Bootstrappers\LoadMailable::class,
         Bootstrappers\LoadServiceProviders::class,
     ];
 }

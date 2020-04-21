@@ -16,7 +16,9 @@
         "robmorgan/phinx": "^0.11.5",
         "fzaninotto/faker": "^1.9",
         "slim/csrf": "^1.0",
-        "illuminate/validation": "^7.6"
+        "illuminate/validation": "^7.6",
+        "swiftmailer/swiftmailer": "^6.0",
+        "guzzlehttp/guzzle": "^6.5"
     },
     "autoload": {
         "files": [

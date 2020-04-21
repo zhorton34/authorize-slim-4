@@ -5,6 +5,13 @@ use App\Support\Route;
 use App\Http\Middleware\RedirectIfGuestMiddleware as RedirectIfGuest;
 use App\Http\Middleware\RedirectIfAuthenticatedMiddleware as RedirectIfAuthenticated;
 
+Route::get('/test', function (\Boot\Foundation\Mail\Mailable $mail, $response) {
+    $successful = $mail->send();
+
+    $response->getBody()->write("Successfully sent email: {$successful}");
+
+    return $response;
+});
 Route::get('/', fn (View $view) => $view('welcome'));
 
 /* 1 Have user confirm they want to reset their password */
