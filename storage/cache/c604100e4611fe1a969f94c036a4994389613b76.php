@@ -7,6 +7,7 @@
 
             <input
                 name="email"
+                value="<?php echo e(old('email')); ?>"
                 placeholder="Email Address"
                 class="w-full border-2 focus:shadow-md rounded-lg p-4 mt-6"
             />

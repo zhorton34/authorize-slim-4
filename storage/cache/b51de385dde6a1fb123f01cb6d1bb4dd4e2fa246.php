@@ -7,18 +7,21 @@
             <?php echo "<input type='hidden' name='csrf_value' value='6e8eb35ae5e722537c1a57ab9728568d' /> \n <input type='hidden' name='csrf_name' value='csrf5e9ee30bb54d3' />"; ?>
 
             <input
+                value="<?php echo e(old('first_name')); ?>"
                 name='first_name'
                 placeholder='First Name'
                 class="w-full border-2 focus:shadow-md rounded-lg p-4 mt-6"
             />
 
             <input
+                value="<?php echo e(old('last_name')); ?>"
                 name='last_name'
                 placeholder='Last Name'
                 class="w-full border-2 focus:shadow-md rounded-lg p-4 mt-6"
             />
 
             <input
+                value="<?php echo e(old('email')); ?>"
                 name="email"
                 placeholder="Email Address"
                 class="w-full border-2 focus:shadow-md rounded-lg p-4 mt-6"
