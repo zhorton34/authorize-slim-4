@@ -424,3 +424,29 @@ class ExampleController
    }
 }
 ```
+
+### Packages & Resources Glossary
+ - [Slim 4](http://www.slimframework.com/docs/v4/)
+ - [Slim Csrf](https://github.com/slimphp/Slim-Csrf)
+ - [Laravel Validators](https://laravel.com/docs/7.x/validation)
+ - [Laravel Homestead](https://laravel.com/docs/7.x/homestead)
+ - [Jenssegers Blade](https://github.com/jenssegers/blade)
+ - [Zeuxisoo Slim Whoops](https://github.com/zeuxisoo/php-slim-whoops)
+ - [Php Dot Env](https://github.com/vlucas/phpdotenv)
+ - [CakePhp Seeders & Migrations](https://github.com/cakephp/phinx)
+ - [Fzaninotto Faker For Factories](https://github.com/fzaninotto/Faker)
+ - [Illuminate Database](https://github.com/illuminate/database)
+ - [Illuminate Support](https://github.com/illuminate/support)
+ - [Php Dependency Injection Container](http://php-di.org/doc/)
+ - [Php Dependency Injection Container Slim Bridge](https://github.com/PHP-DI/Slim-Bridge)
+ - [Laravel Mix Webpack Wrapper](https://laravel-mix.com)
+ - [Swift Mailer for Emails](https://github.com/swiftmailer/swiftmailer)
+ - [Mailtrap for local email testing](https://mailtrap.io)
+ - [Illuminate Mail For Markdown Parser](https://github.com/illuminate/mail)
+ - [Symfony Console Component For Console Commands](https://symfony.com/doc/current/components/console.html)
+ - [Symfony Session Component For Sessions](https://symfony.com/doc/current/session.html)
+ - [Eloquent For Database ORM](https://packagist.org/packages/illuminate/database)
+ - [Vuejs For Front-end Reactivity](https://vuejs.org/v2/guide/)
+ - [Tailwind For CSS & SCSS](https://tailwindcss.com/components)
+ - [Vue Material Design Icons](https://www.npmjs.com/package/vue-material-design-icons)
+ - [Guzzle Http Wrapper](https://github.com/guzzle/guzzle)
