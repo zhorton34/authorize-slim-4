@@ -1,5 +1,5 @@
-# authorize-slim-4
-Slim 4 Authorization Tutorial
+# Authentication With Slim 4 (And much, much more)
+Slim 4 Authentication Tutorial
 
 ## Documentation
  - [Installation](https://github.com/zhorton34/authorize-slim-4#installation)
