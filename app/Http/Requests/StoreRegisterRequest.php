@@ -10,6 +10,8 @@ class StoreRegisterRequest extends FormRequest
         $this->forget('csrf_name');
         $this->forget('confirm_password');
         $this->password = sha1($this->password);
+
+        session()->flash()->set('success', ['Success!']);
     }
 
     public function rules()

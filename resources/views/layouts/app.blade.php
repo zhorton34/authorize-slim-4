@@ -11,6 +11,8 @@
         <div id="app">
             @include('sections.navigation.top')
 
+            @include('sections.flash.messages')
+
             <div id="content">
                 @yield('content')
             </div>

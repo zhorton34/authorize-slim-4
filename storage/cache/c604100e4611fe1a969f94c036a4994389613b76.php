@@ -1,9 +1,7 @@
 <?php $__env->startSection('content'); ?>
-
-    <?php echo $__env->make('sections.errors', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <div class="flex flex-wrap justify-center">
         <form class="bg-white shadow-md hover:shadow-xl rounded-lg w-1/2 p-4 mt-10 flex justify-around flex-wrap items-center" method="POST" action="/login">
-            <?php echo "<input type='hidden' name='csrf_value' value='32e32b12529ab316ad6ff69e6816f6f6' /> \n <input type='hidden' name='csrf_name' value='csrf5e9f6fcbac5fd' />"; app()->bind("old_input", session()->flash()->get("old")); ?>
+            <?php echo "<input type='hidden' name='csrf_value' value='de06078cce939fb01f456fcf43d5d2b2' /> \n <input type='hidden' name='csrf_name' value='csrf5e9f990553280' />"; app()->bind("old_input", session()->flash()->get("old")); ?>
 
             <input
                 name="email"

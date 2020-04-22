@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('sections.errors')
-
     <div class="flex flex-wrap justify-center w-100 items-center">
         <div class="bg-white shadow-md hover:shadow-xl rounded-lg border-2 w-1/2 p-4 w-3/5 mt-10">
             <h1 class="text-2xl text-gray-800 font-semibold">
