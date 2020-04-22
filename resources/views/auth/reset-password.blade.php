@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
-    @include('sections.errors')
     <div class="flex justify-center">
         <form class="bg-white shadow-md hover:shadow-xl rounded-lg w-1/2 p-4 mt-10 flex justify-around flex-wrap items-center" method="POST" action="/reset-password/{{ $key }}">
             @csrf
