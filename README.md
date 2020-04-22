@@ -1,7 +1,7 @@
 # Authentication With Slim 4 (And much, much more)
 Slim 4 Authentication Tutorial
 
-## Documentation
+## Documentation Sections
  - [Installation](https://github.com/zhorton34/authorize-slim-4#installation)
  - [Console Commands](https://github.com/zhorton34/authorize-slim-4#list-slim-console-commands)
  - [Migrate & Seed Database](https://github.com/zhorton34/authorize-slim-4#migrate-and-seed-database)
