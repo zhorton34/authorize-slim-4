@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Auth;
 use App\User;
 use App\Support\View;
+use App\Support\Auth;
 use App\Http\Requests\StoreRegisterRequest;
 
 class RegisterController
 {
-    public function show(View $view)
+    public function form(View $view)
     {
         return $view('auth.register');
     }
 
-    public function store(StoreRegisterRequest $input)
+    public function register(StoreRegisterRequest $input)
     {
         if ($input->failed()) return back();
 

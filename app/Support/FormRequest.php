@@ -36,12 +36,12 @@ class FormRequest extends RequestInput
 
     protected function afterValidationPasses()
     {
-        session()->flash()->set('success', ['Success!']);
+        event()->fire('flash.success', ['Successful!']);
     }
 
     protected function afterValidationFails()
     {
-        //
+        event()->fire('flash.error', ['Whoops, something went wrong!']);
     }
 
     protected function afterValidation()

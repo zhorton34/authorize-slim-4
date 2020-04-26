@@ -49,9 +49,6 @@ class ResetPasswordController
         return $view('auth.sent-reset-password-link-successfully');
     }
 
-    // user opens email, and they have an email from us.
-    // when they click the link in the email, they'll be redirected to the password reset form
-
     public function show(View $view, $key)
     {
         return $view('auth.reset-password', compact('key'));
@@ -74,8 +71,8 @@ class ResetPasswordController
             return redirect('/login');
         }
 
-        session()->flash()->set('errors', [
-            'Was not able to successfully reset user password for unknown reasons'
+        event()->fire('flash.error', [
+            'Whoops, password was not able to be reset for unknown reasons'
         ]);
 
         return back();

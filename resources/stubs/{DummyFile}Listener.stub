@@ -1,0 +1,18 @@
+<?php
+
+namespace {DummyNamespace};
+
+/**
+ * Events simply set up the payload. The listener will receive this event class
+ */
+class {DummyClass}
+{
+    /**
+     * Use dependency injection to set up event payload
+     * All events do is set the event instance, listeners handle the rest
+     */
+    public function __invoke({DummyClass}Event $event)
+    {
+        // $event->payload;
+    }
+}

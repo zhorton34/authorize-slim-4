@@ -5,6 +5,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Illuminate\Support\Collection;
 /*
+ * event
  * old
  * back
  * session
@@ -29,6 +30,13 @@ use Illuminate\Support\Collection;
  * data_set
  */
 
+if (!function_exists('event'))
+{
+    function event() : \Boot\Foundation\Events\Dispatcher
+    {
+        return app()->resolve('events');
+    }
+}
 if (!function_exists('old'))
 {
     function old($key)
@@ -233,24 +241,17 @@ if (! function_exists('class_basename')) {
 
 if (!function_exists('config'))
 {
-    function config($path = null)
+    function config($path = null, $value = null)
     {
-        $config = [];
-        $folder = scandir(config_path());
-        $config_files = array_slice($folder, 2, count($folder));
+        $config = app()->resolve('config');
 
-        foreach ($config_files as $file)
-        {
-            throw_when(
-                Str::after($file, '.') !== 'php',
-                'Config files must be .php files'
-            );
-
-
-            data_set($config, Str::before($file, '.php') , require config_path($file));
+        if (is_null($value)) {
+            return data_get($config, $path);
         }
 
-        return data_get($config, $path);
+        data_set($config, $path, $value);
+
+        app()->bind('config', $config);
     }
 }
 

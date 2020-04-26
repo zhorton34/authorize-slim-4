@@ -2,7 +2,9 @@
 
 namespace Boot\Foundation;
 
-class App extends \Slim\App
+use Slim\App as SlimApp;
+
+class App extends SlimApp
 {
     public function bootedViaConsole()
     {

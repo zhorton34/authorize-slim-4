@@ -1,6 +1,40 @@
 <?php
 
 return [
+    'make:listener' => [
+        'file' => '{DummyFile}Listener.stub',
+        'content' => file_get_contents(resources_path('stubs/{DummyFile}Listener.stub')),
+        'make_path' => app_path('Listeners'),
+
+        'replace' => [
+            'file' => [
+                'stub' => 'php',
+                '{DummyFile}Listener' => ':name:',
+            ],
+            'content' => [
+                '{DummyFile}' => ':name:',
+                '{DummyClass}' => ':name:',
+                '{DummyNamespace}' => 'App\\Listeners',
+            ]
+        ]
+    ],
+    'make:event' => [
+        'file' => '{DummyFile}Event.stub',
+        'content' => file_get_contents(resources_path('stubs/{DummyFile}Event.stub')),
+        'make_path' => app_path('Events'),
+
+        'replace' => [
+            'file' => [
+                'stub' => 'php',
+                '{DummyFile}Event' => ':name:',
+            ],
+            'content' => [
+                '{DummyFile}' => ':name:',
+                '{DummyClass}' => ':name:',
+                '{DummyNamespace}' => 'App\\Events',
+            ]
+        ]
+    ],
     'make:middleware' => [
         'file' => '{DummyFile}Middleware.stub',
         'content' => file_get_contents(resources_path('stubs/{DummyFile}Middleware.stub')),

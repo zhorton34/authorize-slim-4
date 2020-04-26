@@ -31,6 +31,7 @@ class HttpKernel extends Kernel
         Bootstrappers\LoadSession::class,
         Bootstrappers\LoadEnvironmentDetector::class,
         Bootstrappers\LoadEnvironmentVariables::class,
+        Bootstrappers\LoadConfiguration::class,
         Bootstrappers\LoadDebuggingPage::class,
         Bootstrappers\LoadAliases::class,
         Bootstrappers\LoadCsrf::class,

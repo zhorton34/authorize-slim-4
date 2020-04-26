@@ -2,26 +2,32 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Auth;
+use App\Support\Auth;
 use App\Support\View;
+use App\Events\UserLogin;
+use App\Events\UserLogout;
 use App\Http\Requests\StoreLoginRequest;
 
 class LoginController
 {
-    public function show(View $view)
+    public function form(View $view)
     {
         return $view('auth.login');
     }
 
-    public function store(StoreLoginRequest $input)
+    public function login(StoreLoginRequest $input)
     {
         if ($input->failed()) return back();
 
-        $fails = !Auth::attempt($input->email, $input->password);
+        $successful = Auth::attempt($input->email, $input->password);
 
-        if ($fails) return back();
+        if ($successful) {
+            event()->fire(UserLogin::class);
 
-        return redirect('/home');
+            return redirect('/home');
+        }
+
+        return back();
     }
 
     public function logout()
@@ -29,6 +35,8 @@ class LoginController
         Auth::logout();
 
         if (Auth::guest()) {
+            event()->fire(UserLogout::class);
+
             return redirect('/login');
         }
     }
