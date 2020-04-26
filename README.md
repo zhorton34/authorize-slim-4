@@ -475,6 +475,138 @@ class ExampleController
 }
 ```
 
+## Events (Events & associated listeners with dependency injection)
+**Example One**
+- Set up events and event listeners using the global event helper function 
+_NOTE: (This example show's an easy setup, but example two is considered better architecture)_  
+
+```
+// App\Providers\EventServiceProvider boot method()
+
+event()->listen('flash.success', fn ($message) => session()->flash()->add('success', $message);
+
+event()->fire('flash.success', [
+   'Way to go, it worked!'
+]);
+```
+
+**Example Two: Event & Listener Classes** 
+1. `php slim make:event UserLogin`
+2. Open `App/Events/UserLogin.php`
+3. Use the `UserLogin.php` event `__construct` to build or "construct" the event payload
+```
+<?php
+
+namespace App\Events;
+
+use App\Support\Auth;
+use Boot\Foundation\Http\Session;
+
+class ExampleEvent
+{
+    public $user;
+    public $session;
+
+    public function __construct(Session $session)
+    {
+        $this->user = Auth::user();
+        $this->session = $session;
+
+        return $this;
+    }
+}
+```
+
+4. `php slim make:listener FlashWelcomeBackMessage`
+5. Open `App/Listeners/FlashWelcomeBackMessage`
+6. Handle the event payload in the Listener `__invoke` method
+```
+<?php
+
+namespace App\Listeners;
+
+use App\Events\UserLogin;
+
+class FlashWelcomeBackMessage
+{
+   public function __invoke(UserLogin $event)
+   {
+      $event->session->flash()->add('success', "Welcome Back {$event->user->first_name}!"); 
+   }
+
+}
+```
+**Register Class Event & Listeners in `config/events.php`**
+``` 
+return [
+   'events' => [
+      UserLogin::class => [
+          FlashWelcomeBackMessage::class,
+          // ExampleListenerTwo::class,
+          // ExampleListenerThree::class
+      ],
+      // ResetUserPasswordEvent::class => [
+           // GenerateResetPasswordKey::class,
+           // SendUserResetPasswordEmail::class,
+      // ]
+   ]
+];
+```
+
+**Finally trigger event**
+`(Example: App\Http\Controllers\LoginController@login)`
+```
+public function login(StoreLoginRequest $input)
+{
+  if ($input->failed()) return back(); 
+
+  if (Auth::attempt($input->email, $input->password)) 
+  {
+      event()->fire(\App\Events\UserLogin::class); // Fire Event
+
+      return redirect('/home');
+   }
+
+   return back();
+}
+```
+
+**Event Constructor and Listener Invoke Methods Support Dependency Injection**
+// App\Http\LoginController@login
+```
+// Example Using UserLogin Event:
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+$session = app()->resolve('session');
+$different_user = \App\User::find(5); 
+
+event()->fire(UserLogin::class, [
+   $session, $different_user
+]);
+
+// Example Using Random Event
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+event()->fire(ExampleEvent::class, [
+   // parameterOne
+   // parameterTwo
+]);
+
+// Dependency Injection With While Using event() to register listeners
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+event()->listen('welcome-view', fn (\Jessengers\Blade\Blade $blade) => $blade->make('welcome')->render());
+
+// Fire's event. Listeners will work using the blade instance resolved from our service container
+event()->fire('welcome-view');
+
+// inject blade instance with different template path than the one binded to our container
+event()->fire('welcome-view', [
+    new \Jessengers\Blade\Blade(
+        base_path('vendor/package/resources/views'), 
+        storage_path('cache'),
+    )
+]);
+
+
+```
 ### Packages & Resources Glossary
  - [Slim 4](http://www.slimframework.com/docs/v4/)
  - [Slim Csrf](https://github.com/slimphp/Slim-Csrf)
