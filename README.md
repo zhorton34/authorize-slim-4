@@ -17,6 +17,8 @@ Slim 4 Authentication Tutorial
    - `php slim make:provider(Scaffold new Service Provider)`
    - `php slim make:request (Scaffold new FormRequest Validator)`
    - `php slim make:seeder (Scaffold new database seeder)`
+   - `php slim make:event (Scaffold event class)`
+   - `php slim make:listener (Scaffold event listener class)` 
 - [Global Helper Functions](https://github.com/zhorton34/authorize-slim-4#global-helper-functions)
 - [Validators](https://github.com/zhorton34/authorize-slim-4#validatorinput-rules---messages--)
 - [Mailables](https://github.com/zhorton34/authorize-slim-4/blob/master/README.md#mailables-send-emails)
@@ -163,6 +165,8 @@ Available commands:
   make:provider     Scaffold new Service Provider
   make:request      Generate Form Request Validation Scaffold
   make:seeder       Generate a database seeder scaffold
+  make:event        Generate event scaffold
+  make:listener     Generate listener scaffold
  migrate
   migrate:rollback  Rollback Previous Database Migration
  view
@@ -296,6 +300,7 @@ class ConsoleKernel extends Kernel
 
 ## Global Helper Functions
 /*
+ * event
  * old
  * back
  * session
@@ -344,6 +349,50 @@ ExampleController
       return back();
    }
 }
+```
+
+#### event()
+- Set up events and event listeners 
+
+```
+event()->listen('flash.success', fn ($message) => session()->flash()->add('success', $message);
+
+event()->fire('flash.success', ['Way to go, it worked!']);
+```
+
+**Alternatively, you can use the slim scaffold to set up event and listener classes** 
+`php slim make:event ExampleEvent`
+- creates App/Events/ExampleEvent
+`php slim make:listener ExampleListener`
+- create App/Listeners/ExampleListener
+
+**Register Class Event & Listeners in `config/events.php`**
+``` 
+return [
+   'events' => [
+      ExampleEvent::class => [
+          ExampleListener::class,
+          ExampleListenerTwo::class,
+          ExampleListenerThree::class
+      ],
+      ResetUserPasswordEvent::class => [
+          GenerateResetPasswordKey::class,
+          SendUserResetPasswordEmail::class,
+      ]
+   ]
+];
+```
+
+**Finally trigger the associated event**
+```
+// Fire event using dependency injection
+event()->fire(ExampleEvent::class);
+
+// Fire event overriding default depency injections
+event()->fire(ExampleEvent::class, [
+   // parameterOne
+   // parameterTwo
+]);
 ```
 
 #### session()
