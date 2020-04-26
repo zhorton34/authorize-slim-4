@@ -2,6 +2,9 @@
 
 use App\Support\Console;
 
+Console::command('inspire', function () {
+    echo '';
+});
 Console::command('tinker', function () {
     $team = \App\Team::first();
 

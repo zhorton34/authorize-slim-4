@@ -54,7 +54,12 @@ class Auth
 
         $query = User::where(session()->get('user'));
 
-        return $query->exists() ? $query->first() : false;
+        app()->bind(
+            Auth::class,
+            $query->exists() ? $query->first() : false
+        );
+
+        return app()->resolve(Auth::class);
     }
 
     public static function check() : bool
