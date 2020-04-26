@@ -22,6 +22,7 @@ Slim 4 Authentication Tutorial
 - [Global Helper Functions](https://github.com/zhorton34/authorize-slim-4#global-helper-functions)
 - [Validators](https://github.com/zhorton34/authorize-slim-4#validatorinput-rules---messages--)
 - [Mailables](https://github.com/zhorton34/authorize-slim-4/blob/master/README.md#mailables-send-emails)
+- [Events And Listeners](https://github.com/zhorton34/authorize-slim-4/blob/master/README.md#events-events--associated-listeners-with-dependency-injection)
 - [Packages & Resources Glossary](https://github.com/zhorton34/authorize-slim-4#packages--resources-glossary)
 
 # Installation
