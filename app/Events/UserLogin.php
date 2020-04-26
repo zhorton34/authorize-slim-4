@@ -2,7 +2,7 @@
 
 namespace App\Events;
 
-use App\User as Auth;
+use App\Support\Auth;
 use Boot\Foundation\Http\Session;
 
 class UserLogin
@@ -10,9 +10,9 @@ class UserLogin
     public $user;
     public $session;
 
-    public function __construct(Session $session, Auth $user)
+    public function __construct(Session $session)
     {
-        $this->user = $user;
+        $this->user = Auth::user();
         $this->session = $session;
 
         return $this;
