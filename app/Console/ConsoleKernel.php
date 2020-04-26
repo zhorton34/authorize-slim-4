@@ -7,6 +7,8 @@ use Boot\Foundation\ConsoleKernel as Kernel;
 class ConsoleKernel extends Kernel
 {
     public array $commands = [
+        Commands\MakeEventCommand::class,
+        Commands\MakeListenerCommand::class,
         Commands\MakeModelCommand::class,
         Commands\ViewClearCommand::class,
         Commands\MakeCommandCommand::class,

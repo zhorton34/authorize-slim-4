@@ -1,5 +1,7 @@
 <?php
 
+namespace {DummyNamespace};
+
 use App\Support\View;
 use App\Support\RequestInput;
 

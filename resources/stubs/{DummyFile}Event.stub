@@ -1,0 +1,19 @@
+<?php
+
+namespace {DummyNamespace};
+
+/**
+ * Events simply set up the payload. The listener will receive this event class
+ */
+class {DummyClass}
+{
+    public $service;
+
+    /**
+     * Use dependency injection set up event payload that listeners will receive
+     */
+    public function __construct({DummyClass}Service $service)
+    {
+        $this->service = $service;
+    }
+}
