@@ -18,7 +18,9 @@ Slim 4 Authentication Tutorial
    - `php slim make:request (Scaffold new FormRequest Validator)`
    - `php slim make:seeder (Scaffold new database seeder)`
    - `php slim make:event (Scaffold event class)`
-   - `php slim make:listener (Scaffold event listener class)` 
+   - `php slim make:listener (Scaffold event listener class)`
+   - `php slim make:view (Scaffold View files)`
+   - `php slim make:trait (Scaffold new Trait file)` 
 - [Global Helper Functions](https://github.com/zhorton34/authorize-slim-4#global-helper-functions)
 - [Validators](https://github.com/zhorton34/authorize-slim-4#validatorinput-rules---messages--)
 - [Mailables](https://github.com/zhorton34/authorize-slim-4/blob/master/README.md#mailables-send-emails)
@@ -168,6 +170,8 @@ Available commands:
   make:seeder       Generate a database seeder scaffold
   make:event        Generate event scaffold
   make:listener     Generate listener scaffold
+  make:trait        Create a new trait
+  make:view         Generate view Scaffold
  migrate
   migrate:rollback  Rollback Previous Database Migration
  view

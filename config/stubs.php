@@ -154,5 +154,23 @@ return [
             ]
         ],
 
+    ],
+
+    'make:trait' => [
+        'file' => '{DummyFile}Trait.stub',
+        'content' => file_get_contents(resources_path('stubs/{DummyFile}Trait.stub')),
+
+        'make_path' => app_path('Traits'),
+
+        'replace' => [
+            'file' => [
+                'stub' => 'php',
+                '{DummyFile}' => ':name:'
+            ],
+            'content' => [
+                '{DummyClass}' => ':name:',
+                '{DummyNamespace}' => 'App\\Traits'
+            ]
+        ],
     ]
 ];
