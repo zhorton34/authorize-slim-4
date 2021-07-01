@@ -25,6 +25,8 @@ class ConsoleKernel extends Kernel
         Commands\DatabaseTableDisplayCommand::class,
         Commands\MakeServiceProviderCommand::class,
         Commands\MakeMiddlewareCommand::class,
-        Commands\DatabaseRollbackMigrationCommand::class
+        Commands\DatabaseRollbackMigrationCommand::class,
+        Commands\MakeViewCommand::class,
+        Commands\MakeTraitCommand::class
     ];
 }
