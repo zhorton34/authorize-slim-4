@@ -1,3 +1,5 @@
+[![Twitter Follow](https://img.shields.io/twitter/follow/cleancodestudio.svg?style=social)](https://twitter.com/cleancodestudio) 
+
 # Authentication With Slim 4 (And much, much more)
 Slim 4 Authentication Tutorial
 
