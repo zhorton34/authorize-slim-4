@@ -45,6 +45,10 @@ class Command extends Console
             fn ($options, $name) => $this->addArgument($name, ...$options)
         );
 
+        collect($this->options())->each(
+            fn ($options, $name) => $this->addOption($name, null, ...$options)
+        );
+
         if (method_exists($this, 'afterConfiguration'))
         {
             $this->afterConfiguration();
